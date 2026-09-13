@@ -2,6 +2,7 @@
 
 import { AdminMetrics } from "@/types/adminTypes";
 import React from "react";
+import { useTranslations } from "next-intl";
 
 interface Props {
   metrics?: AdminMetrics;
@@ -9,12 +10,14 @@ interface Props {
 }
 
 const AdminMetricCards: React.FC<Props> = ({ metrics, isLoading }) => {
+  const t = useTranslations("Admin.kpi");
+
   const cards = [
     {
       id: "total",
-      title: "Total de Usuarios",
+      title: t("totalUsers"),
       value: metrics?.totalUsers ?? 0,
-      subtitle: "Empresas registradas",
+      subtitle: t("totalUsersSub"),
       gradient: "from-blue-600 to-indigo-700",
       bgLight: "bg-blue-50/70",
       textColor: "text-blue-600",
@@ -22,9 +25,9 @@ const AdminMetricCards: React.FC<Props> = ({ metrics, isLoading }) => {
     },
     {
       id: "active",
-      title: "Usuarios Activos",
+      title: t("activeUsers"),
       value: metrics?.activeUsers ?? 0,
-      subtitle: "Con acceso habilitado",
+      subtitle: t("activeUsersSub"),
       gradient: "from-emerald-500 to-teal-600",
       bgLight: "bg-emerald-50/70",
       textColor: "text-emerald-600",
@@ -32,9 +35,9 @@ const AdminMetricCards: React.FC<Props> = ({ metrics, isLoading }) => {
     },
     {
       id: "disabled",
-      title: "Usuarios Deshabilitados",
+      title: t("disabledUsers"),
       value: metrics?.disabledUsers ?? 0,
-      subtitle: "Acceso bloqueado",
+      subtitle: t("disabledUsersSub"),
       gradient: "from-rose-500 to-red-600",
       bgLight: "bg-rose-50/70",
       textColor: "text-rose-600",
@@ -42,9 +45,9 @@ const AdminMetricCards: React.FC<Props> = ({ metrics, isLoading }) => {
     },
     {
       id: "memberships",
-      title: "Membresías Activas",
+      title: t("activeMemberships"),
       value: metrics?.activeMemberships ?? 0,
-      subtitle: "Planes vigentes",
+      subtitle: t("activeMembershipsSub"),
       gradient: "from-violet-600 to-purple-700",
       bgLight: "bg-purple-50/70",
       textColor: "text-purple-600",
@@ -52,20 +55,20 @@ const AdminMetricCards: React.FC<Props> = ({ metrics, isLoading }) => {
     },
     {
       id: "expiring",
-      title: "Suscripciones por Vencer",
+      title: t("expiringMemberships"),
       value: metrics?.expiringSoonMemberships ?? 0,
-      subtitle: "Próximos 15 días",
+      subtitle: t("expiringMembershipsSub"),
       gradient: "from-amber-500 to-orange-600",
       bgLight: "bg-amber-50/70",
       textColor: "text-amber-600",
       icon: "fal fa-clock",
-      badge: metrics?.expiringSoonMemberships ? "Atención" : undefined,
+      badge: metrics?.expiringSoonMemberships ? t("attentionBadge") : undefined,
     },
     {
       id: "expired",
-      title: "Membresías Vencidas",
+      title: t("expiredMemberships"),
       value: metrics?.expiredMemberships ?? 0,
-      subtitle: "Requieren renovación",
+      subtitle: t("expiredMembershipsSub"),
       gradient: "from-slate-700 to-slate-900",
       bgLight: "bg-slate-100",
       textColor: "text-slate-700",

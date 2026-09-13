@@ -2,6 +2,7 @@
 
 import React from "react";
 import { AdminUser } from "@/types/adminTypes";
+import { useTranslations } from "next-intl";
 
 interface Props {
   isOpen: boolean;
@@ -18,6 +19,8 @@ const ToggleUserStatusModal: React.FC<Props> = ({
   onConfirm,
   isLoading,
 }) => {
+  const t = useTranslations("Admin.modals");
+
   if (!isOpen || !user) return null;
 
   const isDisabling = user.isActive;
@@ -35,29 +38,29 @@ const ToggleUserStatusModal: React.FC<Props> = ({
           </div>
           <div>
             <h4 className="text-lg font-bold text-slate-900">
-              {isDisabling ? "¿Deshabilitar Usuario?" : "¿Habilitar Usuario?"}
+              {isDisabling ? t("disableUserTitle") : t("enableUserTitle")}
             </h4>
             <p className="text-xs text-slate-500 mt-0.5">
-              Confirmación de control de acceso
+              {t("accessControlConfirm")}
             </p>
           </div>
         </div>
 
         <div className="bg-slate-50 rounded-2xl p-4 mb-6 border border-slate-100 flex flex-col gap-2 text-xs text-slate-600">
           <div className="flex justify-between">
-            <span className="font-semibold text-slate-500">Empresa / Usuario:</span>
+            <span className="font-semibold text-slate-500">{t("companyUserLabel")}</span>
             <span className="font-bold text-slate-800">{user.companyName || user.userName}</span>
           </div>
           <div className="flex justify-between">
-            <span className="font-semibold text-slate-500">Correo Electrónico:</span>
+            <span className="font-semibold text-slate-500">{t("emailLabel")}</span>
             <span className="text-slate-800">{user.email}</span>
           </div>
           <div className="flex justify-between">
-            <span className="font-semibold text-slate-500">RUC:</span>
+            <span className="font-semibold text-slate-500">{t("rucLabel")}</span>
             <span className="text-slate-800">{user.rucNumber || "N/A"}</span>
           </div>
           <div className="flex justify-between">
-            <span className="font-semibold text-slate-500">Plan Actual:</span>
+            <span className="font-semibold text-slate-500">{t("currentPlanLabel")}</span>
             <span className="font-semibold text-blue-600">{user.planName}</span>
           </div>
         </div>
@@ -66,12 +69,12 @@ const ToggleUserStatusModal: React.FC<Props> = ({
           {isDisabling ? (
             <span className="text-rose-700 font-medium">
               <i className="fal fa-exclamation-triangle mr-1"></i>
-              Al deshabilitar este usuario, su acceso al sistema SITRA quedará bloqueado inmediatamente. Útil si su suscripción ha terminado o si requiere verificación de pago.
+              {t("disableWarning")}
             </span>
           ) : (
             <span className="text-emerald-700 font-medium">
               <i className="fal fa-check-circle mr-1"></i>
-              Al habilitar este usuario, podrá iniciar sesión nuevamente con sus credenciales y operar normalmente.
+              {t("enableWarning")}
             </span>
           )}
         </p>
@@ -83,7 +86,7 @@ const ToggleUserStatusModal: React.FC<Props> = ({
             disabled={isLoading}
             className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-50"
           >
-            Cancelar
+            {t("cancel")}
           </button>
           <button
             type="button"
@@ -96,7 +99,7 @@ const ToggleUserStatusModal: React.FC<Props> = ({
             }`}
           >
             {isLoading && <i className="fal fa-spinner fa-spin"></i>}
-            {isDisabling ? "Confirmar y Deshabilitar" : "Confirmar y Habilitar"}
+            {isDisabling ? t("confirmDisable") : t("confirmEnable")}
           </button>
         </div>
       </div>

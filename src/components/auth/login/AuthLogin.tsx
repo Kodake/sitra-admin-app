@@ -1,5 +1,6 @@
 "use client";
 import useAuths from "@/hooks/auth/useAuths";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
@@ -7,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 const isLocalEnv = process.env.NEXT_PUBLIC_ENV_TAG === "Local";
 
 const AuthLogin = () => {
+  const tAdmin = useTranslations("Admin");
   const {
     t,
     isBtnDisable,
@@ -60,7 +62,7 @@ const AuthLogin = () => {
       <header className="relative z-10 w-full pt-10 pb-2">
         <div className="flex justify-center">
           <div className="font-bold text-2xl tracking-tight text-white drop-shadow-md flex items-center gap-2">
-            <i className="fal fa-shield-check"></i> SITRA ADMIN
+            <i className="fal fa-shield-check"></i> {tAdmin("portalTitle")}
           </div>
         </div>
       </header>
@@ -69,13 +71,13 @@ const AuthLogin = () => {
         {/* LOGIN CARD */}
         <div className="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 sm:p-10 w-full max-w-[420px]">
           <div className="flex justify-center mb-3">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-blue-50 text-blue-700 border border-blue-200">
-              <i className="fal fa-crown text-blue-600"></i> SuperAdmin SISTRA SRL
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wide bg-blue-50 text-blue-700 border border-blue-200/80 shadow-[0_1px_2px_rgba(37,99,235,0.06)] whitespace-nowrap shrink-0">
+              <i className="fal fa-crown text-blue-600 text-[11px]"></i> {tAdmin("superAdminBadge")}
             </span>
           </div>
-          <h2 className="text-center text-2xl font-semibold mb-2 tracking-tight">Iniciar Sesión</h2>
+          <h2 className="text-center text-2xl font-semibold mb-2 tracking-tight">{tAdmin("loginTitle")}</h2>
           <p className="text-center text-slate-500 mb-8 text-[14px] leading-relaxed">
-            Acceso restringido para SISTRA SRL. Monitoreo de usuarios, métricas y estado de membresías.
+            {tAdmin("loginSubtitle")}
           </p>
 
           <form onSubmit={handleSubmit(onSubmitLogin)} noValidate className="flex flex-col gap-5">
@@ -91,14 +93,14 @@ const AuthLogin = () => {
                     className="text-blue-600 hover:text-blue-800 text-[13px] font-semibold transition-colors flex items-center gap-1 group"
                     onClick={fillDemo}
                   >
-                    <i className="fal fa-bolt transition-transform group-hover:scale-110"></i> Demo
+                    <i className="fal fa-bolt transition-transform group-hover:scale-110"></i> {tAdmin("demoBtn")}
                   </button>
                 )}
               </div>
               <input
                 id="email"
                 type="text"
-                placeholder={t("emailPlaceholder") || "ej. admin@sitra.com"}
+                placeholder={tAdmin("emailPlaceholder")}
                 {...register("email")}
                 autoComplete="off"
                 className={`w-full px-4 py-3.5 rounded-xl border-none bg-slate-100/70 focus:bg-white focus:ring-2 focus:outline-none transition-all placeholder-slate-400 text-[15px] ${
@@ -177,7 +179,7 @@ const AuthLogin = () => {
 
       {/* FOOTER */}
       <footer className="text-center py-8 text-[13px] text-slate-400 mt-auto">
-        © {year} SISTRA SRL. Panel de Administración Central. Todos los derechos reservados.
+        {tAdmin("adminFooter", { year: year ?? new Date().getFullYear() })}
       </footer>
 
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />

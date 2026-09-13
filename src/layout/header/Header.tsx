@@ -136,7 +136,7 @@ const Header = () => {
                 type="button"
                 onClick={toggleTheme}
                 className="text-[18px] text-body hover:text-primary transition-colors leading-none flex items-center"
-                aria-label="Toggle Theme"
+                aria-label={t("toggleTheme")}
               >
                 <i className={theme === "dark" ? "fal fa-sun" : "fal fa-moon"}></i>
               </button>
@@ -202,7 +202,7 @@ const Header = () => {
                   : currentUser?.userName ?? "—"}
               </h5>
               <span className="text-[12px] font-semibold text-primary cursor-pointer block">
-                SuperAdmin • SISTRA SRL
+                {t("superAdminRole")}
               </span>
               <i
                 className={`far fa-chevron-down transition-transform duration-200 ${isProfileDropdown ? 'rotate-180' : ''}`}

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { AdminUser } from "@/types/adminTypes";
+import { useTranslations } from "next-intl";
 
 interface Props {
   isOpen: boolean;
@@ -18,6 +19,7 @@ const EditSubscriptionModal: React.FC<Props> = ({
   onConfirm,
   isLoading,
 }) => {
+  const t = useTranslations("Admin.modals");
   const [endDate, setEndDate] = useState<string>("");
   const [plan, setPlan] = useState<number>(1);
 
@@ -56,7 +58,7 @@ const EditSubscriptionModal: React.FC<Props> = ({
             <i className="fal fa-calendar-edit"></i>
           </div>
           <div>
-            <h4 className="text-lg font-bold text-slate-900">Gestionar Membresía y Suscripción</h4>
+            <h4 className="text-lg font-bold text-slate-900">{t("editSubTitle")}</h4>
             <p className="text-xs text-slate-500 mt-0.5">
               {user.companyName || user.userName} ({user.email})
             </p>
@@ -67,17 +69,17 @@ const EditSubscriptionModal: React.FC<Props> = ({
           {/* Plan Selector */}
           <div className="flex flex-col gap-1.5">
             <label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
-              Nivel de Plan
+              {t("planLevel")}
             </label>
             <select
               value={plan}
               onChange={(e) => setPlan(Number(e.target.value))}
               className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
             >
-              <option value={1}>Free (Plan Gratuito)</option>
-              <option value={2}>Standard (Plan Estándar)</option>
-              <option value={3}>Premium (Plan Premium)</option>
-              <option value={4}>Full (Plan Completo)</option>
+              <option value={1}>{t("freePlan")}</option>
+              <option value={2}>{t("standardPlan")}</option>
+              <option value={3}>{t("premiumPlan")}</option>
+              <option value={4}>{t("fullPlan")}</option>
             </select>
           </div>
 
@@ -85,9 +87,9 @@ const EditSubscriptionModal: React.FC<Props> = ({
           <div className="flex flex-col gap-1.5">
             <div className="flex justify-between items-center">
               <label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
-                Fecha de Expiración de Suscripción
+                {t("expirationDate")}
               </label>
-              <span className="text-[11px] text-slate-400">Extensión rápida:</span>
+              <span className="text-[11px] text-slate-400">{t("quickExtend")}</span>
             </div>
             <input
               type="date"
@@ -103,35 +105,35 @@ const EditSubscriptionModal: React.FC<Props> = ({
                 onClick={() => handleQuickExtend(1)}
                 className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg transition-colors"
               >
-                +1 Mes
+                {t("plus1Month")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickExtend(3)}
                 className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg transition-colors"
               >
-                +3 Meses
+                {t("plus3Months")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickExtend(6)}
                 className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg transition-colors"
               >
-                +6 Meses
+                {t("plus6Months")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickExtend(12)}
                 className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg transition-colors"
               >
-                +1 Año
+                {t("plus1Year")}
               </button>
             </div>
           </div>
 
           <div className="bg-blue-50/60 rounded-2xl p-4 border border-blue-100 text-xs text-blue-900 leading-relaxed">
             <i className="fal fa-info-circle mr-1 text-blue-600"></i>
-            Al guardar esta fecha, el estado de la suscripción se recalculará automáticamente y se mantendrá activa para la empresa correspondiente.
+            {t("editSubNotice")}
           </div>
 
           <div className="flex items-center justify-end gap-3 mt-2">
@@ -141,7 +143,7 @@ const EditSubscriptionModal: React.FC<Props> = ({
               disabled={isLoading}
               className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-50"
             >
-              Cancelar
+              {t("cancel")}
             </button>
             <button
               type="submit"
@@ -149,7 +151,7 @@ const EditSubscriptionModal: React.FC<Props> = ({
               className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 flex items-center gap-2 disabled:opacity-50"
             >
               {isLoading && <i className="fal fa-spinner fa-spin"></i>}
-              Guardar Cambios
+              {t("saveChanges")}
             </button>
           </div>
         </form>

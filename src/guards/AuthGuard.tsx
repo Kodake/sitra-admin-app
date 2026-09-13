@@ -7,6 +7,7 @@ import { isTokenExpired } from "@/utils/is-token-expired";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 
 type Props = {
   children: React.ReactNode;
@@ -30,6 +31,7 @@ export default function AuthGuard({ children }: Props) {
 }
 
 function AuthGuardInternal({ children }: Props) {
+  const tAdmin = useTranslations("Admin");
   const router = useSafeRouter();
   const rawPathname = usePathname();
 
@@ -74,7 +76,7 @@ function AuthGuardInternal({ children }: Props) {
       // Validate SISTRA SRL exclusive access
       if (user.rucNumber !== SISTRA_RUC) {
         toast.error(
-          "Acceso denegado: Este panel está restringido exclusivamente a SISTRA SRL."
+          tAdmin("accessDeniedRestricted")
         );
         logout();
         if (currentPath !== "/") {

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
+import { useTranslations } from "next-intl";
 import {
   AdminUsersFilterParams,
   fetchAdminMetrics,
@@ -77,6 +78,7 @@ export const useAdminMetrics = () => {
 };
 
 export const useAdminUsers = () => {
+  const t = useTranslations("Admin");
   const queryClient = useQueryClient();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -119,14 +121,14 @@ export const useAdminUsers = () => {
       updateAdminUserStatus(userId, payload),
     {
       onSuccess: () => {
-        toast.success("Estado del usuario actualizado exitosamente");
+        toast.success(t("notifications.userStatusUpdated"));
         queryClient.invalidateQueries(["adminUsers"]);
         queryClient.invalidateQueries(["adminMetrics"]);
         setIsStatusModalOpen(false);
         setSelectedUser(null);
       },
       onError: (err: any) => {
-        const msg = err?.response?.data?.detail || err?.response?.data || "Error al actualizar el estado del usuario";
+        const msg = err?.response?.data?.detail || err?.response?.data || t("notifications.userStatusError");
         toast.error(typeof msg === "string" ? msg : JSON.stringify(msg));
       },
     }
@@ -137,14 +139,14 @@ export const useAdminUsers = () => {
       updateAdminUserStatus(userId, payload),
     {
       onSuccess: () => {
-        toast.success("Membresía y suscripción actualizadas exitosamente");
+        toast.success(t("notifications.subscriptionUpdated"));
         queryClient.invalidateQueries(["adminUsers"]);
         queryClient.invalidateQueries(["adminMetrics"]);
         setIsSubModalOpen(false);
         setSelectedUser(null);
       },
       onError: (err: any) => {
-        const msg = err?.response?.data?.detail || err?.response?.data || "Error al actualizar la suscripción";
+        const msg = err?.response?.data?.detail || err?.response?.data || t("notifications.subscriptionError");
         toast.error(typeof msg === "string" ? msg : JSON.stringify(msg));
       },
     }
@@ -152,7 +154,7 @@ export const useAdminUsers = () => {
 
   const handleToggleStatusClick = (user: AdminUser) => {
     if (user.isSuperAdmin) {
-      toast.warning("La cuenta SuperAdmin SISTRA SRL no puede ser deshabilitada.");
+      toast.warning(t("notifications.cannotDisableSuperAdmin"));
       return;
     }
     setSelectedUser(user);
@@ -161,7 +163,7 @@ export const useAdminUsers = () => {
 
   const handleEditSubscriptionClick = (user: AdminUser) => {
     if (user.isSuperAdmin) {
-      toast.info("La cuenta SuperAdmin SISTRA SRL tiene membresía permanente ilimitada.");
+      toast.info(t("notifications.superAdminUnlimited"));
       return;
     }
     setSelectedUser(user);

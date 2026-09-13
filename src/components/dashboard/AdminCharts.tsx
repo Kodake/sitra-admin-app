@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import React from "react";
 import { AdminMetrics } from "@/types/adminTypes";
+import { useTranslations } from "next-intl";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -11,6 +12,8 @@ interface Props {
 }
 
 const AdminCharts: React.FC<Props> = ({ metrics }) => {
+  const t = useTranslations("Admin.charts");
+
   // 1. Plan Distribution Donut Chart
   const planLabels = ["Free", "Standard", "Premium", "Full"];
   const planSeries = [
@@ -43,7 +46,7 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
             show: true,
             total: {
               show: true,
-              label: "Planes",
+              label: t("plansDonutLabel"),
               fontSize: "13px",
               fontWeight: 600,
               color: "#64748b",
@@ -119,7 +122,12 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
     metrics?.expiredMemberships ?? 0,
     metrics?.disabledUsers ?? 0,
   ];
-  const healthLabels = ["Vigentes", "Por Vencer (<15d)", "Vencidas", "Deshabilitados"];
+  const healthLabels = [
+    t("healthActive"),
+    t("healthExpiring"),
+    t("healthExpired"),
+    t("healthDisabled"),
+  ];
 
   const healthChartOptions: ApexCharts.ApexOptions = {
     chart: {
@@ -142,7 +150,7 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
             show: true,
             total: {
               show: true,
-              label: "Total Cuentas",
+              label: t("totalAccountsLabel"),
               fontSize: "12px",
               fontWeight: 600,
               color: "#64748b",
@@ -163,8 +171,8 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
       <div className="lg:col-span-6 bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex flex-col justify-between">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h5 className="text-base font-bold text-slate-800">Crecimiento y Nuevas Empresas</h5>
-            <p className="text-xs text-slate-400 mt-0.5">Evolución de registros en el sistema</p>
+            <h5 className="text-base font-bold text-slate-800">{t("growthTrend")}</h5>
+            <p className="text-xs text-slate-400 mt-0.5">{t("growthTrendDesc")}</p>
           </div>
           <span className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-sm">
             <i className="fal fa-chart-area"></i>
@@ -173,7 +181,7 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
         <div className="w-full h-[280px]">
           <Chart
             options={growthChartOptions}
-            series={[{ name: "Nuevas Empresas", data: growthSeriesData }]}
+            series={[{ name: t("newCompaniesSeries"), data: growthSeriesData }]}
             type="area"
             height="100%"
           />
@@ -184,8 +192,8 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
       <div className="lg:col-span-3 bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex flex-col justify-between">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h5 className="text-base font-bold text-slate-800">Planes Contratados</h5>
-            <p className="text-xs text-slate-400 mt-0.5">Distribución por tier</p>
+            <h5 className="text-base font-bold text-slate-800">{t("planDistribution")}</h5>
+            <p className="text-xs text-slate-400 mt-0.5">{t("planDistributionDesc")}</p>
           </div>
           <span className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center text-sm">
             <i className="fal fa-layer-group"></i>
@@ -200,8 +208,8 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
       <div className="lg:col-span-3 bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex flex-col justify-between">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h5 className="text-base font-bold text-slate-800">Salud de Suscripciones</h5>
-            <p className="text-xs text-slate-400 mt-0.5">Estado actual y alertas</p>
+            <h5 className="text-base font-bold text-slate-800">{t("subscriptionHealth")}</h5>
+            <p className="text-xs text-slate-400 mt-0.5">{t("subscriptionHealthDesc")}</p>
           </div>
           <span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm">
             <i className="fal fa-heartbeat"></i>

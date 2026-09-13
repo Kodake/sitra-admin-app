@@ -18,6 +18,7 @@ const SISTRA_RUC = "133556545";
 const useAuths = (mode: AuthMode) => {
   const t = useTranslations("Login");
   const g = useTranslations("General");
+  const tAdmin = useTranslations("Admin");
   const router = useSafeRouter();
   const searchParams = useSearchParams();
   const { login, logout } = useAuth();
@@ -71,7 +72,7 @@ const useAuths = (mode: AuthMode) => {
 
         const ruc = (decoded.rucNumber || "").trim();
         if (ruc !== SISTRA_RUC) {
-          toast.error("Acceso denegado: Este panel está restringido exclusivamente a SISTRA SRL.");
+          toast.error(tAdmin("accessDeniedRestricted"));
           return;
         }
 
@@ -96,7 +97,7 @@ const useAuths = (mode: AuthMode) => {
           companyLogoUrl: decoded.companyLogoUrl,
         });
 
-        toast.success("¡Bienvenido al Panel SuperAdmin de SISTRA SRL!");
+        toast.success(tAdmin("welcomeMessage"));
         router.push("/dashboard");
       }
     },
@@ -104,7 +105,7 @@ const useAuths = (mode: AuthMode) => {
 
   const forgotMutation = useMutation(authForgotPassword, {
     onSuccess: () => {
-      toast.success("Password reset link sent to your email!");
+      toast.success(tAdmin("forgotSuccess"));
       router.push("/");
     },
     onError: () => {
@@ -114,11 +115,11 @@ const useAuths = (mode: AuthMode) => {
 
   const resetMutation = useMutation(authResetPassword, {
     onSuccess: () => {
-      toast.success("Password successfully reset!");
+      toast.success(tAdmin("resetSuccess"));
       router.push("/");
     },
     onError: () => {
-      toast.error("Failed to reset password. The link might be expired.");
+      toast.error(tAdmin("resetError"));
     },
   });
 
@@ -164,7 +165,7 @@ const useAuths = (mode: AuthMode) => {
     const token = searchParams?.get("token");
 
     if (!email || !token) {
-      toast.error("Invalid password reset link.");
+      toast.error(tAdmin("resetInvalidLink"));
       return;
     }
 

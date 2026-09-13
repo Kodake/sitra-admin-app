@@ -177,6 +177,6 @@ export const useResetPasswordValidationSchema = () => {
             ),
         confirmPassword: Yup.string()
             .required(t("required"))
-            .oneOf([Yup.ref("password")], "Passwords must match"),
+            .oneOf([Yup.ref("password")], t("passwordsDoNotMatch")),
     });
 };

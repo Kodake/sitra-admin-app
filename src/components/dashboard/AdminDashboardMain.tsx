@@ -7,8 +7,10 @@ import AdminCharts from "./AdminCharts";
 import ExpiringAlertBanner from "./ExpiringAlertBanner";
 import { useAdminMetrics } from "@/hooks/admin/useAdmin";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const AdminDashboardMain: React.FC = () => {
+  const t = useTranslations("Admin");
   const {
     metrics,
     isLoading,
@@ -51,9 +53,9 @@ const AdminDashboardMain: React.FC = () => {
             <i className="fal fa-users-crown"></i>
           </div>
           <div>
-            <h4 className="text-lg font-bold">Control Central de Usuarios y Membresías</h4>
+            <h4 className="text-lg font-bold">{t("quickActionTitle")}</h4>
             <p className="text-xs text-slate-300 mt-1 max-w-xl">
-              Habilite o deshabilite cuentas manualmente, verifique comprobantes de suscripción y gestione fechas de expiración de cada empresa registrada.
+              {t("quickActionDesc")}
             </p>
           </div>
         </div>
@@ -61,7 +63,7 @@ const AdminDashboardMain: React.FC = () => {
           href="/users"
           className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-all shadow-md hover:shadow-blue-500/25 whitespace-nowrap flex items-center gap-2"
         >
-          <i className="fal fa-sliders-h"></i> Abrir Panel de Usuarios
+          <i className="fal fa-sliders-h"></i> {t("openUsersPanel")}
         </Link>
       </div>
     </div>

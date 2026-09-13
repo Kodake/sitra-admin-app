@@ -1,11 +1,16 @@
+"use client";
+
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 const QuickMenuDropdown = () => {
+    const t = useTranslations("Menu");
+
     return (
         <ul>
-            <li><Link href="/dashboard">Dashboard</Link></li>
-            <li><Link href="/users">Usuarios y Membresías</Link></li>
-            <li><Link href="/profile">Mi Perfil</Link></li>
+            <li><Link href="/dashboard">{t("dashboard")}</Link></li>
+            <li><Link href="/users">{t("usersAndMemberships")}</Link></li>
+            <li><Link href="/profile">{t("myProfile")}</Link></li>
         </ul>
     );
 };

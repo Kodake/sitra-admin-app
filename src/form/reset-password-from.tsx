@@ -1,12 +1,14 @@
 "use client";
 
 import useAuths from "@/hooks/auth/useAuths";
+import { useTranslations } from "next-intl";
 import Link from 'next/link';
 import { useSearchParams } from "next/navigation";
 import { Suspense } from 'react';
 
 // Form implementation that uses searchParams
 const ResetPasswordFormContent = () => {
+    const tAdmin = useTranslations("Admin");
     const {
         t,
         register,
@@ -28,12 +30,12 @@ const ResetPasswordFormContent = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
-                <h2 className="text-xl font-semibold mb-2">Invalid Link</h2>
+                <h2 className="text-xl font-semibold mb-2">{tAdmin("invalidLinkTitle")}</h2>
                 <p className="text-slate-500 mb-6">
-                    This password reset link is invalid or has expired.
+                    {tAdmin("invalidLinkDesc")}
                 </p>
                 <Link href="/forgot" className="block w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3.5 rounded-full shadow-sm transition-all text-[15px]">
-                    Request a new link
+                    {tAdmin("requestNewLink")}
                 </Link>
             </div>
         );
@@ -41,9 +43,9 @@ const ResetPasswordFormContent = () => {
 
     return (
         <div className="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 sm:p-10 w-full max-w-[420px]">
-            <h2 className="text-center text-2xl font-semibold mb-2 tracking-tight">Create new password</h2>
+            <h2 className="text-center text-2xl font-semibold mb-2 tracking-tight">{tAdmin("createNewPassword")}</h2>
             <p className="text-center text-slate-500 mb-8 text-[15px] leading-relaxed">
-                Please enter your new password below.
+                {tAdmin("createNewPasswordDesc")}
             </p>
 
             <form onSubmit={handleSubmit(onSubmitReset)} noValidate className="flex flex-col gap-5">
@@ -70,7 +72,7 @@ const ResetPasswordFormContent = () => {
                 {/* Confirm Password Field */}
                 <div className="flex flex-col gap-1.5">
                     <label htmlFor="confirmPassword" className="text-[13px] font-semibold text-slate-600 uppercase tracking-wide px-1">
-                        Confirm Password
+                        {tAdmin("confirmPassword")}
                     </label>
                     <input 
                         id="confirmPassword" 
@@ -98,9 +100,9 @@ const ResetPasswordFormContent = () => {
                                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                             </svg>
-                            Resetting...
+                            {tAdmin("resetting")}
                         </>
-                    ) : "Reset Password"}
+                    ) : tAdmin("resetPassword")}
                 </button>
             </form>
 
