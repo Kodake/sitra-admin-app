@@ -1,0 +1,1290 @@
+/* ==========================================================================
+   SITRA Premium UI/UX Styling System Overrides
+   Designed by Antigravity AI
+   ========================================================================== */
+
+/* ==========================================================================
+   1. TACTILE GLASSMORPHIC BUTTONS
+   ========================================================================== */
+
+.inventual-btn,
+.inventual-btn-search,
+.inventual-outline-btn,
+.inventual-action-btn,
+.product-delete-btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.96) !important;
+    filter: brightness(0.95) !important;
+  }
+  
+  &.disabled, &:disabled {
+    cursor: not-allowed !important;
+    opacity: 0.55 !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Primary buttons standard blue glow */
+.inventual-btn,
+.inventual-btn-search {
+  box-shadow: 0 4px 14px 0 rgba(0, 122, 255, 0.25) !important;
+  
+  &:hover {
+    box-shadow: 0 6px 20px 0 rgba(0, 122, 255, 0.4) !important;
+    background-color: #0066d6 !important;
+  }
+}
+
+/* Success Button */
+.inventual-btn.secondary-btn,
+.inventual-action-btn.secondary-btn {
+  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.25) !important;
+  
+  &:hover {
+    box-shadow: 0 6px 20px 0 rgba(16, 185, 129, 0.4) !important;
+  }
+}
+
+/* Primary Specific override - transition from deep blue to success */
+.inventual-btn.primary-btn {
+  box-shadow: 0 4px 14px 0 rgba(12, 17, 43, 0.1) !important;
+  
+  &:hover {
+    box-shadow: 0 6px 20px 0 rgba(16, 185, 129, 0.3) !important;
+  }
+}
+
+/* Warning Button */
+.inventual-btn.warning-btn,
+.inventual-action-btn.warning-btn {
+  box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.2) !important;
+  
+  &:hover {
+    box-shadow: 0 6px 20px 0 rgba(245, 158, 11, 0.35) !important;
+  }
+}
+
+/* Teal Button */
+.inventual-btn.teal-btn,
+.inventual-action-btn.teal-btn {
+  box-shadow: 0 4px 14px 0 rgba(20, 184, 166, 0.2) !important;
+  
+  &:hover {
+    box-shadow: 0 6px 20px 0 rgba(20, 184, 166, 0.35) !important;
+  }
+}
+
+/* Danger Button */
+.inventual-btn.danger-btn,
+.inventual-action-btn.danger-btn,
+.product-delete-btn {
+  box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.2) !important;
+  
+  &:hover {
+    box-shadow: 0 6px 20px 0 rgba(239, 68, 68, 0.35) !important;
+  }
+}
+
+/* Action button icons scale on hover */
+.inventual-action-btn {
+  svg {
+    transition: transform 0.25s ease !important;
+  }
+  &:hover svg {
+    transform: scale(1.1) !important;
+  }
+  
+  &.danger-btn:hover svg {
+    transform: scale(1.1) rotate(8deg) !important;
+  }
+}
+
+
+/* ==========================================================================
+   2. PREMIUM FORM FOCUS RINGS & SOFT ELEMENTS
+   ========================================================================== */
+
+.inventual-form-field,
+.inventual-start-input-label-style,
+.inventual-select-field-style,
+.inventual-input-type-file-style {
+  
+  input,
+  select,
+  textarea,
+  .MuiInputBase-root {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    background-color: #f2f2f7 !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.01) !important;
+
+    &:hover:not(:focus):not(.disabled):not(.Mui-disabled) {
+      background-color: #e5e5ea !important;
+      border-color: rgba(0, 0, 0, 0.08) !important;
+    }
+
+    &:focus,
+    &.Mui-focused {
+      background-color: #ffffff !important;
+      border-color: #007aff !important;
+      box-shadow: 
+        0 0 0 4px rgba(0, 122, 255, 0.15),
+        0 4px 12px rgba(0, 0, 0, 0.03),
+        inset 0 1px 1px rgba(0, 0, 0, 0.01) !important;
+      transform: translateY(-1px) !important;
+    }
+  }
+  
+  textarea {
+    line-height: 1.5 !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+}
+
+/* Material Autocomplete and text fields */
+.MuiAutocomplete-root,
+.MuiTextField-root {
+  .MuiInputBase-root {
+    background-color: #f2f2f7 !important;
+    border-radius: 10px !important;
+    border: 1px solid transparent !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+
+    &:hover:not(.Mui-focused):not(.Mui-disabled) {
+      background-color: #e5e5ea !important;
+    }
+
+    &.Mui-focused {
+      background-color: #ffffff !important;
+      border-color: #007aff !important;
+      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15) !important;
+      transform: translateY(-1px) !important;
+    }
+
+    fieldset {
+      border: none !important;
+    }
+  }
+}
+
+
+/* ==========================================================================
+   3. NEXT-GEN POS/QUOTATION CARD GRID SELECTION
+   ========================================================================== */
+
+.inventual-possale-tab-product,
+.inventual-possale-tab-product-active {
+  position: relative !important;
+  border-radius: 16px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  padding: 18px 14px !important;
+  min-height: 170px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden !important;
+
+  &:hover {
+    transform: translateY(-5px) scale(1.02) !important;
+    border-color: rgba(0, 122, 255, 0.25) !important;
+    box-shadow: 
+      0 12px 28px -8px rgba(0, 122, 255, 0.14),
+      0 4px 10px -2px rgba(0, 0, 0, 0.02) !important;
+  }
+  
+  &:active {
+    transform: translateY(-2px) scale(0.98) !important;
+  }
+
+  .inventual-possale-tab-product-text h5 {
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    margin-top: 8px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .inventual-possale-tab-product-img img {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+  
+  &:hover .inventual-possale-tab-product-img img {
+    transform: scale(1.1) !important;
+  }
+}
+
+/* Active Card Style with Glowing Border and selection badge */
+.inventual-possale-tab-product-active {
+  border-color: #007aff !important;
+  background: linear-gradient(135deg, rgba(0, 122, 255, 0.04) 0%, rgba(0, 122, 255, 0.08) 100%) !important;
+  box-shadow: 
+    0 10px 24px -6px rgba(0, 122, 255, 0.18),
+    inset 0 0 0 1px rgba(0, 122, 255, 0.1) !important;
+
+  &::before {
+    content: "" !important;
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background: #007aff !important;
+    box-shadow: 0 2px 8px rgba(0, 122, 255, 0.4) !important;
+    z-index: 10 !important;
+    animation: bounceScaleIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+  }
+
+  &::after {
+    content: "" !important;
+    position: absolute !important;
+    top: 15px !important;
+    right: 17px !important;
+    width: 6px !important;
+    height: 10px !important;
+    border: solid #ffffff !important;
+    border-width: 0 2px 2px 0 !important;
+    transform: rotate(45deg) scale(1) !important;
+    z-index: 11 !important;
+    animation: bounceScaleIn 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards !important;
+  }
+  
+  &:hover {
+    border-color: #0066d6 !important;
+    box-shadow: 
+      0 16px 32px -8px rgba(0, 122, 255, 0.28),
+      inset 0 0 0 1px rgba(0, 122, 255, 0.15) !important;
+  }
+}
+
+@keyframes bounceScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+
+/* ==========================================================================
+   4. HIGH-FIDELITY ZEBRA-STRIPED & INTERACTIVE TABLES
+   ========================================================================== */
+
+.inventual-common-mat-list,
+.inventual-common-lg-list,
+.inventual-common-small-table {
+  
+  table {
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.03) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    
+    tbody tr {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      
+      &:nth-child(even) {
+        background-color: rgba(248, 250, 252, 0.65) !important;
+      }
+      
+      &:hover {
+        background-color: rgba(0, 122, 255, 0.035) !important;
+        transform: translateY(-0.5px) !important;
+        box-shadow: inset 3px 0 0 #007aff !important;
+        
+        td {
+          color: #0f172a !important;
+        }
+      }
+      
+      &.inventual-table-row-active {
+        background-color: rgba(0, 122, 255, 0.05) !important;
+        box-shadow: inset 4px 0 0 #007aff !important;
+      }
+    }
+
+    th,
+    .MuiTableCell-head {
+      background-color: #f8fafc !important;
+      font-weight: 700 !important;
+      color: #334155 !important;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.05) !important;
+      font-size: 0.825rem !important;
+      letter-spacing: 0.03em !important;
+      text-transform: uppercase !important;
+    }
+
+    td,
+    .MuiTableCell-body {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.03) !important;
+      padding: 14px 12px !important;
+      font-size: 0.875rem !important;
+    }
+  }
+
+  .MuiTablePagination-root {
+    background-color: #ffffff !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02) !important;
+    border: 1px solid rgba(0, 0, 0, 0.03) !important;
+    margin-top: 16px !important;
+    padding: 2px 10px !important;
+    
+    .MuiTablePagination-actions button {
+      transition: all 0.2s ease !important;
+      border-radius: 8px !important;
+      &:hover {
+        background-color: rgba(0, 122, 255, 0.08) !important;
+        color: #007aff !important;
+      }
+    }
+  }
+}
+
+
+/* ==========================================================================
+   5. CUSTOM THIN GLOBAL SCROLLBARS
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 6px !important;
+  height: 6px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.12) !important;
+  border-radius: 20px !important;
+  border: 1px solid transparent !important;
+  background-clip: padding-box !important;
+  transition: all 0.3s ease !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 23, 42, 0.28) !important;
+  border-radius: 20px !important;
+  border: 1px solid transparent !important;
+  background-clip: padding-box !important;
+}
+
+.search-dropdown.dropdown-scroll,
+.item-name-scroll {
+  &::-webkit-scrollbar {
+    width: 4px !important;
+    height: 4px !important;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 122, 255, 0.2) !important;
+    border-radius: 10px !important;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 122, 255, 0.4) !important;
+  }
+}
+
+
+/* ==========================================================================
+   6. FLUID SIDEBAR LINK ANIMATIONS & MENU HIGHLIGHTS & FOOTER COPYRIGHT
+   ========================================================================== */
+
+.inventual-sidebar-area {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.inventual-sidebar-navigation {
+  flex: 1 1 auto !important;
+  overflow-y: auto !important;
+  max-height: calc(100vh - 70px) !important;
+  -webkit-overflow-scrolling: touch;
+  
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+  }
+}
+
+.inventual-sidebar-navigation nav ul li.sidenav-nav-item {
+  margin-bottom: 2px !important;
+
+  a {
+    position: relative !important;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    border-radius: 12px !important;
+    
+    &:hover {
+      transform: translateX(4px) !important;
+      background-color: rgba(0, 122, 255, 0.06) !important;
+      
+      span {
+        color: #007aff !important;
+      }
+      i::before, i {
+        color: #007aff !important;
+      }
+    }
+  }
+
+  &.active > a.sidenav-nav-link,
+  a.current-page {
+    background-color: rgba(0, 122, 255, 0.1) !important;
+    box-shadow: none !important;
+    border-radius: 12px !important;
+    
+    span {
+      color: #007aff !important;
+      font-weight: 700 !important;
+    }
+    i::before, i {
+      color: #007aff !important;
+    }
+  }
+}
+
+.sublevel-nav-A {
+  border-left: 2px solid rgba(0, 122, 255, 0.15) !important;
+  margin-left: 22px !important;
+  padding-left: 8px !important;
+  margin-top: 4px !important;
+  margin-bottom: 6px !important;
+
+  .sublevel-nav-item-A {
+    a {
+      padding: 7px 10px !important;
+      border-radius: 10px !important;
+
+      &:hover {
+        background-color: rgba(0, 122, 255, 0.08) !important;
+      }
+
+      &.current-page {
+        background-color: rgba(0, 122, 255, 0.12) !important;
+        font-weight: 700 !important;
+      }
+    }
+  }
+}
+
+/* Dynamic logo brightness controls in light mode */
+.sidebar-logo img,
+.sidebar-small-logo img,
+.inventual-sidebar-main-logo img {
+  filter: brightness(0) !important; /* turns entire logo to solid black in light mode so white text is visible */
+}
+
+/* Global clean footer copyright card overrides */
+.inventual-copyright {
+  background-color: var(--bg-card) !important;
+  border-top: 1px solid var(--border-color) !important;
+  border-left: 1px solid var(--border-color) !important;
+  border-right: 1px solid var(--border-color) !important;
+  margin-top: 50px !important;
+  height: 60px !important;
+  line-height: 60px !important;
+  border-radius: 12px 12px 0 0 !important;
+  box-shadow: 
+    0 -10px 25px -12px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.8) !important;
+  
+  span {
+    color: var(--text-body) !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+  }
+}
+
+
+/* ==========================================================================
+   7. DUAL-THEME DARK & LIGHT SYSTEM (GLOBAL CASCADING OVERRIDES)
+   ========================================================================== */
+
+:root {
+  --bg-app: #f5f5f7;
+  --bg-card: #ffffff;
+  --bg-sidebar: #0c112b;
+  --bg-header: #ffffff;
+  
+  --text-heading: #0d0f19;
+  --text-body: #616161;
+  
+  --border-color: #eff0f2;
+  --border-light: #ebebeb;
+  
+  --bg-input: #f2f2f7;
+}
+
+[data-theme='dark'],
+.dark {
+  --bg-app: #080c14;        /* Saturated midnight obsidian black backdrop */
+  --bg-card: #0f172a;       /* Saturated Tailwind Slate-900 elevated cards bg */
+  --bg-header: #0f172a;     /* Clean Header bg matching cards */
+  
+  --text-heading: #f8fafc;  /* Clean high contrast light slate text */
+  --text-body: #94a3b8;     /* Balanced slate-steel readable body text */
+  
+  --border-color: #1e293b;  /* Saturated dark border */
+  --border-light: #334155;  /* Saturated medium dark border */
+  
+  --bg-input: #1e293b;      /* Satin slate form background */
+
+  /* Global dark-theme layout overrides */
+  body,
+  .inventual-content-area,
+  .inventual-dashboard-area {
+    background-color: var(--bg-app) !important;
+    color: var(--text-body) !important;
+  }
+
+  /* White-bg containers and modular cards - Obsidian layered effect */
+  .bg-white,
+  .inventual-newsale-area,
+  .inventual-common-card,
+  .inventual-possale-tab-product,
+  .inventual-possale-tab-product-active,
+  .inventual-copyright-area,
+  .inventual-header-wrapper,
+  .inventual-quick-dropdown,
+  .inventual-notify-dropdown {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+    box-shadow: 
+      0 10px 30px -10px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.03) !important;
+  }
+
+  /* Clean headings & primary text contrast overrides */
+  h1, h2, h3, h4, h5, h6,
+  .text-heading,
+  .inventual-header-profile-info h5,
+  .inventual-header-language-content button,
+  .MuiTypography-root,
+  .MuiFormLabel-root,
+  .inventual-form-field h5,
+  .inventual-form-field h6,
+  .inventual-start-input-label-style h5,
+  .inventual-start-input-label-style h6,
+  label {
+    color: var(--text-heading) !important;
+  }
+
+  /* Body & secondary texts contrast */
+  p, span, label,
+  .text-body,
+  .inventual-sidebar-menu ul li a,
+  .MuiTableCell-body,
+  .MuiTablePagination-displayedRows,
+  .MuiTablePagination-selectLabel {
+    color: var(--text-body) !important;
+  }
+
+  /* General border overrides */
+  .border,
+  .border-b,
+  .border-r,
+  .border-t,
+  .border-l,
+  .border-solid,
+  .border-border,
+  .border-borderLight,
+  .custom-height-70 {
+    border-color: var(--border-color) !important;
+  }
+
+  /* Table styling overrides */
+  table {
+    background-color: var(--bg-card) !important;
+    border-color: var(--border-color) !important;
+
+    tbody tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.01) !important;
+    }
+
+    tbody tr:hover {
+      background-color: rgba(255, 255, 255, 0.02) !important;
+      box-shadow: inset 3px 0 0 #007aff !important;
+
+      td {
+        color: var(--text-heading) !important;
+      }
+    }
+
+    th,
+    .MuiTableCell-head {
+      background-color: rgba(255, 255, 255, 0.02) !important;
+      color: var(--text-heading) !important;
+      border-bottom: 2px solid var(--border-color) !important;
+    }
+
+    td,
+    .MuiTableCell-body {
+      color: var(--text-body) !important;
+      border-bottom: 1px solid var(--border-color) !important;
+    }
+  }
+
+  /* Form inputs, textareas, and select components */
+  input,
+  select,
+  textarea,
+  .MuiInputBase-root,
+  .MuiOutlinedInput-root,
+  .react-datepicker-wrapper input {
+    background-color: var(--bg-input) !important;
+    color: var(--text-heading) !important;
+    border: 1px solid var(--border-color) !important;
+
+    /* Ensure child inputs use bright color */
+    input {
+      color: var(--text-heading) !important;
+    }
+
+    fieldset {
+      border: none !important;
+    }
+
+    &:hover:not(:focus):not(.disabled):not(.Mui-disabled) {
+      background-color: #243049 !important;
+      border-color: var(--border-light) !important;
+    }
+
+    &:focus,
+    &.Mui-focused {
+      background-color: #0c121e !important;
+      border-color: #007aff !important;
+      box-shadow: 
+        0 0 0 4px rgba(0, 122, 255, 0.15),
+        0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    }
+  }
+
+  /* Icons inside form fields and header wrappers */
+  input ~ i,
+  .inventual-form-field i,
+  .MuiSvgIcon-root,
+  .MuiIconButton-root,
+  .inventual-header-notify-wrapper button i,
+  .inventual-sidebar-icon-bar i {
+    color: var(--text-body) !important;
+  }
+
+  /* Material UI Popovers, Dropdowns, Autocomplete options inside portals */
+  .MuiPopover-paper,
+  .MuiMenu-paper,
+  .MuiAutocomplete-paper,
+  .MuiList-root,
+  .MuiMenuItem-root,
+  .MuiMenu-list {
+    background-color: var(--bg-card) !important;
+    color: var(--text-heading) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+
+    .MuiMenuItem-root:hover,
+    li.MuiMenuItem-root:hover,
+    .MuiAutocomplete-option[aria-selected="true"],
+    .MuiAutocomplete-option.Mui-focused {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+      color: #007aff !important;
+    }
+  }
+
+  /* Unified Checkboxes */
+  .MuiCheckbox-root {
+    color: rgba(255, 255, 255, 0.22) !important;
+    &.Mui-checked {
+      color: #007aff !important;
+    }
+  }
+
+  /* Disabled inputs and forms */
+  input.disabled,
+  input:disabled,
+  .Mui-disabled,
+  .is-disabled textarea {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.04) !important;
+    cursor: not-allowed !important;
+    opacity: 0.65 !important;
+  }
+
+  /* Placeholders */
+  input::placeholder,
+  textarea::placeholder,
+  .MuiInputBase-input::placeholder {
+    color: #475569 !important;
+    opacity: 1 !important;
+  }
+
+  /* Outline buttons upgrades */
+  .inventual-btn.outline-btn {
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-heading) !important;
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    
+    &:hover {
+      background-color: #007aff !important;
+      border-color: #007aff !important;
+      color: #ffffff !important;
+    }
+  }
+
+  /* react-datepicker calendar layout styling overrides */
+  .react-datepicker {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5) !important;
+    
+    .react-datepicker__header {
+      background-color: var(--bg-input) !important;
+      border-bottom: 1px solid var(--border-color) !important;
+    }
+    
+    .react-datepicker__current-month,
+    .react-datepicker__day-name,
+    .react-datepicker__day {
+      color: var(--text-heading) !important;
+    }
+    
+    .react-datepicker__day:hover {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    .react-datepicker__day--selected {
+      background-color: #007aff !important;
+      color: #ffffff !important;
+    }
+    
+    .react-datepicker__day--disabled {
+      color: rgba(255, 255, 255, 0.15) !important;
+    }
+  }
+  
+  /* Material UI pagination buttons overrides */
+  .MuiTablePagination-root {
+    background-color: var(--bg-card) !important;
+    color: var(--text-heading) !important;
+    border-color: var(--border-color) !important;
+
+    .MuiTablePagination-actions button {
+      color: var(--text-body) !important;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        color: #007aff !important;
+      }
+    }
+  }
+
+  /* --------------------------------------------------------------------------
+     Sidebar Premium Obsidian theme overrides
+     -------------------------------------------------------------------------- */
+  .inventual-sidebar-area {
+    background-color: #0c112b !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 4px 0 25px rgba(0, 0, 0, 0.35);
+  }
+
+  .inventual-sidebar-navigation nav ul li.sidenav-nav-item {
+    a:hover {
+      background-color: rgba(255, 255, 255, 0.05) !important;
+      
+      span {
+        color: #007aff !important;
+      }
+      i::before, i {
+        color: #007aff !important;
+      }
+    }
+    
+    &.active > a.sidenav-nav-link,
+    a.current-page {
+      background-color: rgba(0, 122, 255, 0.18) !important;
+      box-shadow: none !important;
+      border-radius: 12px !important;
+      
+      span {
+        color: #3894ff !important;
+        font-weight: 700 !important;
+      }
+      i::before, i {
+        color: #3894ff !important;
+      }
+    }
+  }
+
+  .sublevel-nav-A {
+    border-left-color: rgba(255, 255, 255, 0.1) !important;
+
+    .sublevel-nav-item-A {
+      a {
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.06) !important;
+        }
+
+        &.current-page {
+          background-color: rgba(0, 122, 255, 0.2) !important;
+          span {
+            color: #3894ff !important;
+          }
+        }
+      }
+    }
+  }
+
+  /* Logo color inversion for Obsidian dark mode compatibility - pure white logo */
+  .sidebar-logo img,
+  .sidebar-small-logo img,
+  .inventual-sidebar-main-logo img {
+    filter: brightness(0) invert(1) !important; /* turns entire logo to pure crisp white in dark mode */
+  }
+
+  /* Footer copyright card shadows for dark mode */
+  .inventual-copyright {
+    box-shadow: 
+      0 -10px 25px -12px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.03) !important;
+  }
+
+  /* --------------------------------------------------------------------------
+     LogInvoices Status Badges Premium dark-mode overrides
+     -------------------------------------------------------------------------- */
+  .bg-emerald-50.text-emerald-700.border-emerald-200\/60 {
+    background-color: rgba(16, 185, 129, 0.12) !important;
+    color: #10b981 !important;
+    border-color: rgba(16, 185, 129, 0.25) !important;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.1) !important;
+  }
+  
+  .bg-rose-50.text-rose-700.border-rose-200\/60 {
+    background-color: rgba(239, 68, 68, 0.12) !important;
+    color: #ff5066 !important;
+    border-color: rgba(239, 68, 68, 0.25) !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.1) !important;
+  }
+  
+  .bg-amber-50.text-amber-700.border-amber-200\/60 {
+    background-color: rgba(245, 158, 11, 0.12) !important;
+    color: #ff9720 !important;
+    border-color: rgba(245, 158, 11, 0.25) !important;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.1) !important;
+  }
+  
+  .bg-slate-50.text-slate-700.border-slate-200\/60 {
+    background-color: rgba(148, 163, 184, 0.12) !important;
+    color: #94a3b8 !important;
+    border-color: rgba(148, 163, 184, 0.25) !important;
+  }
+  
+  /* Ensure the font mono of invoice numbers matches dark heading contrast */
+  .font-mono.text-slate-700 {
+    color: var(--text-heading) !important;
+  }
+}
+
+/* ==========================================================================
+   8. PREMIUM POS CREATION SCREEN DARK MODE ENHANCEMENTS
+   ========================================================================== */
+
+.dark {
+  /* Sleek Glassmorphic POS item card pills & general high contrast status indicators */
+  .bg-gray-100\/80 {
+    background-color: rgba(51, 65, 85, 0.45) !important;
+    color: #cbd5e1 !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  }
+  
+  .bg-blue-50 {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+    color: #60a5fa !important;
+    border: 1px solid rgba(59, 130, 246, 0.25) !important;
+  }
+  
+  .text-blue-700 {
+    color: #60a5fa !important;
+  }
+
+  .bg-emerald-50 {
+    background-color: rgba(16, 185, 129, 0.15) !important;
+    color: #34d399 !important;
+    border: 1px solid rgba(16, 185, 129, 0.25) !important;
+  }
+  
+  .text-emerald-600 {
+    color: #34d399 !important;
+  }
+
+  /* Premium Responsive Image Placeholders for POS grid items */
+  .bg-gray-50 {
+    background-color: rgba(15, 23, 42, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+  }
+
+  /* Invert light image placeholders gracefully into sleek dark placeholders */
+  img[src^="data:image/svg+xml;utf8"] {
+    filter: invert(0.9) brightness(0.7) contrast(1.3) !important;
+  }
+
+  /* Grand Total Box Premium Dark-Mode Glassmorphism styling */
+  .bg-gradient-to-r.from-blue-50.to-indigo-50 {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%) !important;
+    border: 1px solid rgba(59, 130, 246, 0.25) !important;
+    box-shadow: 
+      0 8px 32px 0 rgba(0, 0, 0, 0.4),
+      inset 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+    
+    span.text-blue-900 {
+      color: #93c5fd !important; /* Soft, highly legible sky blue instead of navy */
+      font-weight: 600 !important;
+    }
+    
+    span.text-transparent {
+      background: linear-gradient(135deg, #60a5fa 0%, #a5b4fc 100%) !important;
+      -webkit-background-clip: text !important;
+      background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      color: transparent !important;
+    }
+  }
+
+  /* High contrast typography for POS item names & table totals */
+  .font-bold.text-gray-800,
+  .text-gray-800 {
+    color: var(--text-heading) !important;
+  }
+
+  /* High-fidelity legibility for disabled inputs & textareas (preventing black-on-black text) */
+  .Mui-disabled input,
+  .Mui-disabled select,
+  .Mui-disabled textarea,
+  .Mui-disabled .MuiInputBase-input,
+  input:disabled,
+  select:disabled,
+  textarea:disabled {
+    color: #cbd5e1 !important;
+    -webkit-text-fill-color: #cbd5e1 !important; /* Enforces legibility in WebKit browsers */
+    background-color: rgba(15, 23, 42, 0.35) !important;
+    border-color: rgba(255, 255, 255, 0.04) !important;
+    opacity: 0.85 !important;
+  }
+
+  /* Premium Table Action (Acciones) Buttons & Icons Overrides in Dark Mode */
+  button.hover\:bg-red-50:hover {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    color: #f87171 !important;
+    
+    i, svg {
+      color: #f87171 !important;
+      fill: #f87171 !important;
+    }
+  }
+
+  /* Boost visibility of table action icons in their idle states */
+  td button.text-gray-400,
+  td .text-gray-400 {
+    color: #94a3b8 !important;
+  }
+
+  /* Soft placeholder text contrast inside text fields */
+  input::placeholder,
+  textarea::placeholder,
+  .MuiInputBase-input::placeholder {
+    color: #475569 !important;
+    opacity: 1 !important;
+  }
+
+  /* Override bg-lightest background in dark mode to keep it premium dark */
+  .bg-lightest {
+    background-color: rgba(255, 255, 255, 0.02) !important;
+  }
+
+  /* Premium Table Action (Acciones) Dropdown Button in Dark Mode */
+  .inventual-list-action-style button {
+    background-color: var(--bg-input) !important;
+    color: var(--text-heading) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 8px !important;
+    
+    i, svg {
+      color: var(--text-body) !important;
+      fill: var(--text-body) !important;
+    }
+    
+    &:hover {
+      background-color: rgba(0, 122, 255, 0.15) !important;
+      border-color: rgba(0, 122, 255, 0.3) !important;
+      color: #60a5fa !important;
+      
+      i, svg {
+        color: #60a5fa !important;
+        fill: #60a5fa !important;
+      }
+    }
+  }
+
+  /* Ensure all table headers (sortable and non-sortable like Acciones) have the exact same premium color in dark mode */
+  .MuiTableCell-head,
+  .MuiTableCell-head *,
+  .MuiTableSortLabel-root,
+  .MuiTableSortLabel-root.Mui-active,
+  .MuiTableSortLabel-root:hover,
+  .MuiTableSortLabel-icon {
+    color: var(--text-heading) !important;
+    fill: var(--text-heading) !important;
+  }
+}
+
+/* Force pure white background for company logos in all themes */
+.company-logo-bg,
+[data-theme='dark'] .company-logo-bg,
+.dark .company-logo-bg {
+  background-color: #ffffff !important;
+}
+
+/* ==========================================================================
+   9. TABLE HEADER & CELL STYLING FIXES (LIGHT & DARK MODE)
+   ========================================================================== */
+
+/* Comprehensive Dark Mode Overrides for Table Headers across the entire app */
+html.dark,
+body.dark,
+.dark,
+[data-theme='dark'] {
+  .bg-lightest {
+    background-color: #1e293b !important;
+  }
+
+  thead,
+  .MuiTableHead-root {
+    background-color: #1e293b !important;
+  }
+
+  table th,
+  table .MuiTableCell-head,
+  .MuiTableCell-head,
+  .inventual-common-mat-list table th,
+  .inventual-common-mat-list table .MuiTableCell-head,
+  .inventual-common-lg-list table th,
+  .inventual-common-lg-list table .MuiTableCell-head,
+  .inventual-common-small-table table th,
+  .inventual-common-small-table table .MuiTableCell-head {
+    background-color: #1e293b !important;
+    color: #f1f5f9 !important;
+    border-bottom: 1px solid #334155 !important;
+
+    /* Ensure text inside spans/divs inherits crisp light color */
+    span, p, div {
+      color: #f1f5f9 !important;
+    }
+
+    /* Checkbox in header */
+    .MuiCheckbox-root {
+      color: #94a3b8 !important;
+
+      &.Mui-checked,
+      &.MuiCheckbox-indeterminate {
+        color: #007aff !important;
+      }
+    }
+
+    /* Sort label */
+    .MuiTableSortLabel-root {
+      color: #f1f5f9 !important;
+
+      &:hover {
+        color: #60a5fa !important;
+
+        .MuiTableSortLabel-icon {
+          color: #60a5fa !important;
+          opacity: 1 !important;
+        }
+      }
+
+      &.Mui-active {
+        color: #60a5fa !important;
+
+        .MuiTableSortLabel-icon {
+          color: #60a5fa !important;
+          opacity: 1 !important;
+        }
+      }
+
+      .MuiTableSortLabel-icon {
+        color: #94a3b8 !important;
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   10. DETAIL MODAL & DIALOG UX ENHANCEMENTS
+   ========================================================================== */
+
+.detail-modal-paper {
+  border-radius: 16px !important;
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.22) !important;
+  background-color: #ffffff !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+.detail-modal-title {
+  padding: 16px 24px !important;
+  background-color: #ffffff !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+
+  .text-heading {
+    font-size: 1.125rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+  }
+}
+
+.detail-modal-content-wrapper {
+  background-color: #ffffff !important;
+  border-color: #f1f5f9 !important;
+}
+
+/* Dark mode for DetailModal container */
+html.dark,
+body.dark,
+.dark,
+[data-theme='dark'] {
+  .detail-modal-paper {
+    background-color: #0f172a !important;
+    border-color: #334155 !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  .detail-modal-title {
+    background-color: #0f172a !important;
+    border-bottom: 1px solid #1e293b !important;
+
+    .text-heading {
+      color: #f8fafc !important;
+    }
+  }
+
+  .detail-modal-content-wrapper {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+  }
+}
+
+/* Detail Modal Content Layout Normalization */
+.detail-modal-body {
+  width: 100% !important;
+
+  /* 1. Eliminate nested page padding & outer margins */
+  .inventual-content-area {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* 2. Flatten inner card containers (strip duplicate shadows, borders, mt-7, and background) */
+  [class*="inventual-add-"],
+  [class*="inventual-edit-"] {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 24px 28px !important;
+
+    @media (max-width: 640px) {
+      padding: 16px !important;
+    }
+  }
+
+  /* 3. Eliminate the artificial 4-column constraint and col-start-1 lock */
+  /* By default on sm/md/lg screens, balance single-column inputs into clean 2-column pairs */
+  [class*="col-start-1"],
+  .col-start-1,
+  .md\:col-start-1,
+  .lg\:col-start-1 {
+    grid-column-start: auto !important;
+  }
+
+  [class*="lg:col-span-4"][class*="lg:col-start-1"],
+  .lg\:col-span-4.lg\:col-start-1 {
+    grid-column: span 12 / span 12 !important;
+    grid-column-start: auto !important;
+
+    @media (min-width: 640px) {
+      grid-column: span 6 / span 6 !important;
+    }
+  }
+
+  /* When an input container is the only child in a grid, make it full-width */
+  .grid > [class*="lg:col-span-4"][class*="lg:col-start-1"]:only-of-type,
+  .grid > div:only-child {
+    grid-column: span 12 / span 12 !important;
+  }
+
+  /* Hide empty containers (e.g. read-only submit button wrappers) */
+  .grid > div:empty {
+    display: none !important;
+  }
+
+  /* Ensure any action button row spans full width */
+  .flex.justify-end {
+    grid-column: span 12 / span 12 !important;
+  }
+
+  /* Dark mode label & input text styling inside modal */
+  html.dark &,
+  body.dark &,
+  .dark &,
+  [data-theme='dark'] & {
+    h5, label {
+      color: #cbd5e1 !important;
+    }
+
+    .inventual-add-category-area,
+    .inventual-add-currency-area,
+    .inventual-add-tax-area,
+    .inventual-add-expense-area,
+    .inventual-add-model-area,
+    .inventual-add-brand-area,
+    .inventual-add-stock-area,
+    .inventual-add-product-area,
+    .inventual-add-service-area,
+    .inventual-add-contact-area,
+    .inventual-add-user-area,
+    .inventual-add-role-area,
+    .inventual-add-deadline-area,
+    .inventual-edit-contact-area {
+      background: transparent !important;
+    }
+  }
+}
+
+

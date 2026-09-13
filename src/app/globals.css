@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+@import url("https://fonts.googleapis.com/css?family=Denk+One");
+@import url("https://fonts.googleapis.com/css?family=Arimo");
+
+.rotingtxt {
+  -webkit-transform: rotate(331deg);
+  -moz-transform: rotate(331deg);
+  -o-transform: rotate(331deg);
+  transform: rotate(331deg);
+  font-size: 15em;
+  color: rgba(255, 0, 0, 0.1);
+  position: absolute;
+  font-family: "Denk One", sans-serif;
+  text-transform: uppercase;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(331deg);
+  z-index: 9999;
+}
+
+.env-watermark {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(255, 0, 0, 0.15); /* More transparent but still visible */
+  pointer-events: none;
+  user-select: none;
+  z-index: 9999;
+  white-space: nowrap;
+  text-transform: uppercase;
+}

@@ -1,0 +1,36 @@
+/*-----------------------------------------------------------------------------------
+
+    Template Name: Inventual - NextJs Inventory Admin Template
+    Author: Bdevs
+    Version: 1.0
+
+-----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------*/
+@use './common.scss';
+@use './rtl/rtlMain.scss';
+@use './auth/login.scss';
+@use './elements/badge.scss';
+@use './elements/tab.scss';
+@use './elements/buttons.scss';
+@use './elements/form.scss';
+
+@use './elements/table.scss';
+@use './elements/modal.scss';
+@use './elements/radio.scss';
+@use './header/header.scss';
+@use './sidebar/sidebar.scss';
+@use './dashboard/dashboard.scss';
+@use './dashboard/shortcodes.scss';
+@use './dashboard/invoice.scss';
+@use './dashboard/quick-report.scss';
+@use './dashboard/chart.scss';
+@use './dashboard/file-upload.scss';
+@use './dashboard/message.scss';
+@use './dashboard/possale.scss';
+@use './dashboard/admin-user.scss';
+@use './dashboard/product.scss';
+@use './dashboard/rolepermission.scss';
+@use './dashboard/generatebarcode.scss';
+@use './dashboard/add-product.scss';
+@use './dashboard/calender.scss';
+@use './dashboard/newsale.scss';

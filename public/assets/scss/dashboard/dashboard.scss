@@ -1,0 +1,29 @@
+// ===================================================================
+// Dashboard Layout — Core Structure Only
+// Sidebar layout (widths, positions, transitions) is handled entirely
+// by Tailwind classes in DefaultWrapper.tsx and SidebarMenu.tsx.
+// This file only contains non-layout styles (shadows, blur, padding).
+// ===================================================================
+
+.inventual-dashboard-main {
+	@apply flex;
+
+	&-content {
+		&-body {
+			&-wrap {
+				@apply ps-[30px] pb-[30px] pt-5 pe-[30px] max2Xl:pe-[30px] maxXs:px-[15px] font-primary;
+			}
+		}
+	}
+}
+
+.custom-boxshadow {
+	box-shadow: 0px 20px 40px rgba(18, 42, 91, 0.05);
+}
+
+.inventual-header-wrapper {
+	@apply bg-[rgba(255,255,255,0.75)];
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}

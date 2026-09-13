@@ -1,0 +1,242 @@
+/* ==========================================================================
+   SITRA Premium "Standard But Better" Toast Notification Styling System
+   Designed by Antigravity AI
+   ========================================================================== */
+
+:root {
+  --toast-bg-standard:   #ffffff; /* Elegant pure white solid container */
+  --toast-border-standard: rgba(0, 0, 0, 0.06);
+  --toast-fg-primary:    #0f172a; /* High-contrast modern deep slate typography */
+  --toast-fg-secondary:  #64748b; /* Soft slate-steel gray secondary typography */
+
+  --toast-success:       hsl(142, 72%, 35%);
+  --toast-success-gradient: linear-gradient(135deg, hsl(142, 72%, 42%), hsl(142, 72%, 32%));
+  
+  --toast-error:         hsl(350, 89%, 48%);
+  --toast-error-gradient:   linear-gradient(135deg, hsl(350, 89%, 52%), hsl(350, 89%, 42%));
+  
+  --toast-warning:       hsl(38, 92%, 38%);
+  --toast-warning-gradient: linear-gradient(135deg, hsl(38, 92%, 42%), hsl(38, 92%, 32%));
+  
+  --toast-info:          hsl(217, 91%, 48%);
+  --toast-info-gradient:    linear-gradient(135deg, hsl(217, 91%, 52%), hsl(217, 91%, 40%));
+}
+
+/* Container padding and high priority positioning */
+.Toastify__toast-container {
+  padding: 1.5rem;
+  z-index: 99999 !important;
+}
+
+/* Base Toast Card Design with High-End Minimalist Aesthetics */
+.Toastify__toast {
+  position: relative;
+  min-height: 70px;
+  border-radius: 14px;
+  background-color: var(--toast-bg-standard) !important;
+  border: 1px solid var(--toast-border-standard) !important;
+  color: var(--toast-fg-primary) !important;
+  font-family: 'Outfit', 'Inter', -apple-system, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow: hidden;
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto !important; /* ensures click detection is fully active */
+  
+  /* Multi-layered soft floating shadows */
+  box-shadow: 
+    0 10px 25px -5px rgba(15, 23, 42, 0.05),
+    0 8px 10px -6px rgba(15, 23, 42, 0.05),
+    0 1px 3px rgba(15, 23, 42, 0.03),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.8) !important;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 20px 30px -8px rgba(15, 23, 42, 0.08),
+      0 10px 12px -8px rgba(15, 23, 42, 0.06) !important;
+  }
+}
+
+/* Glowing Neon left-side severity indicator strip */
+.Toastify__toast::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: 4px 0 0 4px;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   Variant severity configurations (left-side strips)
+   ========================================================================== */
+
+/* 1. SUCCESS TOAST */
+.Toastify__toast--success {
+  &::before {
+    background: var(--toast-success-gradient);
+    box-shadow: 1px 0 8px rgba(16, 185, 129, 0.35);
+  }
+}
+
+/* 2. ERROR TOAST */
+.Toastify__toast--error {
+  &::before {
+    background: var(--toast-error-gradient);
+    box-shadow: 1px 0 8px rgba(239, 68, 68, 0.35);
+  }
+}
+
+/* 3. WARNING TOAST */
+.Toastify__toast--warning {
+  &::before {
+    background: var(--toast-warning-gradient);
+    box-shadow: 1px 0 8px rgba(245, 158, 11, 0.35);
+  }
+}
+
+/* 4. INFO TOAST */
+.Toastify__toast--info {
+  &::before {
+    background: var(--toast-info-gradient);
+    box-shadow: 1px 0 8px rgba(59, 130, 246, 0.35);
+  }
+}
+
+/* Internal body content */
+.Toastify__toast-body {
+  margin: 0;
+  padding: 0 8px 0 12px;
+  align-items: center;
+  color: var(--toast-fg-primary) !important;
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+
+  /* Subtitle text styles */
+  small,
+  span.text-secondary {
+    color: var(--toast-fg-secondary) !important;
+    display: block;
+    margin-top: 4px;
+    font-size: 0.775rem;
+    font-weight: 500;
+  }
+}
+
+/* Customized Notification Icons styling with Elegant Circular Badge */
+.Toastify__toast-icon {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: badgeSpringIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both !important;
+  
+  svg {
+    width: 14px !important;
+    height: 14px !important;
+    transition: all 0.3s ease;
+  }
+}
+
+.Toastify__toast:hover .Toastify__toast-icon {
+  transform: scale(1.1) rotate(4deg);
+}
+
+.Toastify__toast--success {
+  .Toastify__toast-icon {
+    background: rgba(16, 185, 129, 0.08) !important;
+    border: 1px solid rgba(16, 185, 129, 0.18) !important;
+    svg { fill: var(--toast-success); }
+  }
+}
+
+.Toastify__toast--error {
+  .Toastify__toast-icon {
+    background: rgba(239, 68, 68, 0.08) !important;
+    border: 1px solid rgba(239, 68, 68, 0.18) !important;
+    svg { fill: var(--toast-error); }
+  }
+}
+
+.Toastify__toast--warning {
+  .Toastify__toast-icon {
+    background: rgba(245, 158, 11, 0.08) !important;
+    border: 1px solid rgba(245, 158, 11, 0.18) !important;
+    svg { fill: var(--toast-warning); }
+  }
+}
+
+.Toastify__toast--info {
+  .Toastify__toast-icon {
+    background: rgba(59, 130, 246, 0.08) !important;
+    border: 1px solid rgba(59, 130, 246, 0.18) !important;
+    svg { fill: var(--toast-info); }
+  }
+}
+
+/* Premium Close Button styling - Standard But Better */
+/* Premium Close Button styling - Standard But Better */
+.Toastify__close-button {
+  color: var(--toast-fg-secondary) !important;
+  opacity: 0.65 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  pointer-events: auto !important; /* guarantees button intercepts clicks */
+
+  &:hover {
+    color: var(--toast-fg-primary) !important;
+    opacity: 1 !important;
+  }
+
+  svg {
+    fill: currentColor !important;
+    color: currentColor !important;
+    pointer-events: none !important; /* ensures click bubbles to parent button */
+  }
+}
+
+/* Unified Progress Bar customization */
+.Toastify__progress-bar {
+  height: 3px;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 0 0 0 14px;
+}
+
+.Toastify__progress-bar--success {
+  background: var(--toast-success-gradient);
+}
+
+.Toastify__progress-bar--error {
+  background: var(--toast-error-gradient);
+}
+
+.Toastify__progress-bar--warning {
+  background: var(--toast-warning-gradient);
+}
+
+.Toastify__progress-bar--info {
+  background: var(--toast-info-gradient);
+}
+
+@keyframes badgeSpringIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) rotate(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}

@@ -1,0 +1,10 @@
+@use 'tailwindcss/base';
+@use 'tailwindcss/components';
+@use 'tailwindcss/utilities';
+
+@use '../../public/assets/css/fontawesome-all.min.css';
+@use '../../public/assets/scss/main.scss';
+@use "react-datepicker/dist/react-datepicker.css";
+@use 'react-toastify/dist/ReactToastify.css';
+@use './toast';
+@use './ux-enhancements';

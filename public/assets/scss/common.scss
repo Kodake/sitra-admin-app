@@ -1,0 +1,91 @@
+* {
+    @apply box-border;
+}
+
+body {
+    @apply m-0 p-0 text-[14px] bg-[#f5f5f7] font-normal text-body;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input::placeholder,
+textarea::placeholder {
+    @apply opacity-100 text-body;
+}
+
+input,
+select,
+textarea,
+button {
+    @apply font-normal opacity-100 box-border;
+    font-family: inherit;
+}
+
+button {
+    @apply cursor-pointer;
+}
+
+a,
+button,
+i {
+    @apply transition-all duration-300;
+}
+
+ul,
+ol {
+    @apply m-0 p-0 list-none;
+}
+
+img,
+svg,
+i {
+    @apply inline-block;
+}
+
+.custom-shadow {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.inventual-common-card {
+    @apply bg-white p-5 sm:p-7 rounded-[16px];
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+//Material styles
+li.MuiMenuItem-root {
+    @apply outline-none text-[14px] text-heading font-primary not-italic flex items-center gap-[6px] min-h-10 min-w-[120px];
+
+    &:hover {
+        @apply text-[#007aff];
+
+        a,
+        i,
+        button {
+            @apply text-[#007aff];
+        }
+    }
+
+    em {
+        @apply not-italic;
+    }
+}
+
+//error page
+.content-error-item {
+    h2 {
+        @apply text-[28px] font-bold text-heading;
+    }
+
+    p {
+        @apply text-[15px] text-body;
+    }
+}
+
+.error-thumb {
+    img {
+        @apply mb-10 max-w-full;
+    }
+}
+
+.error-btn {
+    @apply mt-[35px];
+}
