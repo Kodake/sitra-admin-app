@@ -126,11 +126,23 @@ const DynamicTable = <T extends { id: string | number; isActive?: boolean }>({
                                             {column.render ? (
                                                 column.render(row)
                                             ) : column.id === "status" ? (
-                                                row.isActive ? (
-                                                    <span className="badge-stroke badge-success">{t_g("activated")}</span>
-                                                ) : (
-                                                    <span className="badge-stroke badge-danger">{t_g("deactivated")}</span>
-                                                )
+                                                row.isActive !== undefined ? (
+                                                    row.isActive ? (
+                                                        <span className="badge-stroke badge-success">{t_g("activated")}</span>
+                                                    ) : (
+                                                        <span className="badge-stroke badge-danger">{t_g("deactivated")}</span>
+                                                    )
+                                                ) : (row as any).status !== undefined ? (
+                                                    typeof (row as any).status === "boolean" ? (
+                                                        (row as any).status ? (
+                                                            <span className="badge-stroke badge-success">{t_g("activated")}</span>
+                                                        ) : (
+                                                            <span className="badge-stroke badge-danger">{t_g("deactivated")}</span>
+                                                        )
+                                                    ) : (
+                                                        <span className="badge-stroke badge-gray">{String((row as any).status)}</span>
+                                                    )
+                                                ) : null
                                             ) : column.id === "action" ? (
                                                 actions && (!actions.shouldShowActions || actions.shouldShowActions(row)) && (
                                                     <div className="inventual-list-action-style">

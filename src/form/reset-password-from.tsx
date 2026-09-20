@@ -34,7 +34,7 @@ const ResetPasswordFormContent = () => {
                 <p className="text-slate-500 mb-6">
                     {tAdmin("invalidLinkDesc")}
                 </p>
-                <Link href="/forgot" className="block w-full bg-slate-900 hover:bg-slate-800 text-white font-semibold py-3.5 rounded-full shadow-sm transition-all text-[15px]">
+                <Link href="/forgot" className="block text-center w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-sm sm:text-[15px] shadow-lg shadow-blue-500/25 active:scale-95 transition-all">
                     {tAdmin("requestNewLink")}
                 </Link>
             </div>
@@ -61,8 +61,8 @@ const ResetPasswordFormContent = () => {
                         {...register("password")}
                         placeholder="••••••••" 
                         autoComplete="new-password" 
-                        className={`w-full px-4 py-3.5 rounded-xl border-none bg-slate-100/70 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all placeholder-slate-400 text-[15px] shadow-sm ${
-                            errors.password ? "ring-2 ring-red-500/50 bg-red-50/50" : ""
+                        className={`w-full px-4 py-3.5 rounded-2xl border border-slate-200 bg-slate-50/60 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:outline-none transition-all placeholder-slate-400 text-sm sm:text-[15px] shadow-inner ${
+                            errors.password ? "border-rose-300 ring-4 ring-rose-500/10 bg-rose-50/30" : ""
                         }`}
                         required
                     />
@@ -80,8 +80,8 @@ const ResetPasswordFormContent = () => {
                         {...register("confirmPassword")}
                         placeholder="••••••••" 
                         autoComplete="new-password" 
-                        className={`w-full px-4 py-3.5 rounded-xl border-none bg-slate-100/70 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all placeholder-slate-400 text-[15px] shadow-sm ${
-                            errors.confirmPassword ? "ring-2 ring-red-500/50 bg-red-50/50" : ""
+                        className={`w-full px-4 py-3.5 rounded-2xl border border-slate-200 bg-slate-50/60 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:outline-none transition-all placeholder-slate-400 text-sm sm:text-[15px] shadow-inner ${
+                            errors.confirmPassword ? "border-rose-300 ring-4 ring-rose-500/10 bg-rose-50/30" : ""
                         }`}
                         required
                     />
@@ -92,7 +92,7 @@ const ResetPasswordFormContent = () => {
                 <button 
                     type="submit" 
                     disabled={isBtnDisable} 
-                    className="w-full mt-2 bg-slate-900 hover:bg-slate-800 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-full shadow-[0_4px_14px_0_rgb(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] transition-all text-[15px] flex items-center justify-center gap-2"
+                    className="w-full mt-2 py-3.5 px-5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-sm sm:text-[15px] shadow-lg shadow-blue-500/25 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                     {isBtnDisable ? (
                         <>
@@ -102,7 +102,24 @@ const ResetPasswordFormContent = () => {
                             </svg>
                             {tAdmin("resetting")}
                         </>
-                    ) : tAdmin("resetPassword")}
+                    ) : (
+                        <>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-4 h-4 text-white stroke-current"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2.5}
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                            <span>{tAdmin("resetPassword")}</span>
+                        </>
+                    )}
                 </button>
             </form>
 

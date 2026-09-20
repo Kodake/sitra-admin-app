@@ -47,7 +47,7 @@ const AdminDashboardMain: React.FC = () => {
       <AdminCharts metrics={metrics} />
 
       {/* 5. Quick Navigation Action Card */}
-      <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 rounded-2xl p-6 text-white shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950 rounded-3xl p-6 text-white shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-xl text-blue-300">
             <i className="fal fa-users-crown"></i>
@@ -61,7 +61,7 @@ const AdminDashboardMain: React.FC = () => {
         </div>
         <Link
           href="/users"
-          className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-all shadow-md hover:shadow-blue-500/25 whitespace-nowrap flex items-center gap-2"
+          className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-2xl transition-all shadow-md hover:shadow-blue-500/25 whitespace-nowrap flex items-center gap-2 active:scale-95"
         >
           <i className="fal fa-sliders-h"></i> {t("openUsersPanel")}
         </Link>

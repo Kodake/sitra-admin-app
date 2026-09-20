@@ -36,17 +36,17 @@ const AdminDateFilter: React.FC<Props> = ({
   ];
 
   return (
-    <div className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-100 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div className="bg-white dark:bg-slate-900 rounded-3xl p-4 sm:p-5 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
       {/* Title & Info */}
       <div>
         <div className="flex items-center gap-2.5 flex-wrap">
-          <h4 className="text-base font-bold text-slate-800">{t("metricsAuditTitle")}</h4>
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide bg-blue-50 text-blue-700 border border-blue-200/80 shadow-[0_1px_2px_rgba(37,99,235,0.06)] whitespace-nowrap shrink-0">
+          <h4 className="text-base font-bold text-slate-800 dark:text-white">{t("metricsAuditTitle")}</h4>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800/60 shadow-[0_1px_2px_rgba(37,99,235,0.06)] whitespace-nowrap shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
             {t("superAdminBadge")}
           </span>
         </div>
-        <p className="text-xs text-slate-400 mt-0.5">
+        <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
           {t("metricsAuditDesc")}
         </p>
       </div>
@@ -54,16 +54,16 @@ const AdminDateFilter: React.FC<Props> = ({
       {/* Filter controls */}
       <div className="flex flex-wrap items-center gap-2.5">
         {/* Preset pill buttons */}
-        <div className="flex items-center bg-slate-100 p-1 rounded-xl gap-1">
+        <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-2xl gap-1">
           {presets.map((p) => (
             <button
               key={p.id}
               type="button"
               onClick={() => onPresetChange(p.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                 datePreset === p.id
-                  ? "bg-white text-blue-600 shadow-sm"
-                  : "text-slate-600 hover:text-slate-900"
+                  ? "bg-white dark:bg-slate-900 text-blue-600 dark:text-blue-400 shadow-sm"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               {p.label}
@@ -73,22 +73,22 @@ const AdminDateFilter: React.FC<Props> = ({
 
         {/* Date Inputs */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5">
-            <span className="text-[11px] font-semibold text-slate-400 mr-1.5">{t("from")}</span>
+          <div className="flex items-center bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 rounded-2xl px-2.5 py-1.5">
+            <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 mr-1.5">{t("from")}</span>
             <input
               type="date"
               value={fromDate}
               onChange={(e) => onFromDateChange(e.target.value)}
-              className="bg-transparent text-xs text-slate-700 font-medium focus:outline-none"
+              className="bg-transparent text-xs text-slate-700 dark:text-slate-200 font-medium focus:outline-none"
             />
           </div>
-          <div className="flex items-center bg-slate-50 border border-slate-200 rounded-xl px-2.5 py-1.5">
-            <span className="text-[11px] font-semibold text-slate-400 mr-1.5">{t("to")}</span>
+          <div className="flex items-center bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 rounded-2xl px-2.5 py-1.5">
+            <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 mr-1.5">{t("to")}</span>
             <input
               type="date"
               value={toDate}
               onChange={(e) => onToDateChange(e.target.value)}
-              className="bg-transparent text-xs text-slate-700 font-medium focus:outline-none"
+              className="bg-transparent text-xs text-slate-700 dark:text-slate-200 font-medium focus:outline-none"
             />
           </div>
         </div>
@@ -98,10 +98,10 @@ const AdminDateFilter: React.FC<Props> = ({
           type="button"
           onClick={onRefresh}
           disabled={isLoading}
-          className="p-2.5 bg-slate-100 hover:bg-slate-200 rounded-xl text-slate-600 hover:text-slate-900 transition-colors disabled:opacity-50"
+          className="p-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-2xl text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors disabled:opacity-50"
           title={t("refreshData")}
         >
-          <i className={`fal fa-sync-alt ${isLoading ? "fa-spin text-blue-600" : ""}`}></i>
+          <i className={`fal fa-sync-alt ${isLoading ? "fa-spin text-blue-600 dark:text-blue-400" : ""}`}></i>
         </button>
       </div>
     </div>

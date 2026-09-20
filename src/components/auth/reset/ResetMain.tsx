@@ -2,46 +2,54 @@
 
 import ResetPasswordFrom from "@/form/reset-password-from";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
-import SITRALogo from "../../../../public/assets/img/logo/logo.png";
+import { useEffect, useState } from "react";
 
 const ResetMain = () => {
     const t = useTranslations("Login");
+    const [year, setYear] = useState<number | null>(null);
+
+    useEffect(() => {
+        setYear(new Date().getFullYear());
+        
+        // Force Light Mode for Auth Pages
+        const isDark = document.documentElement.classList.contains("dark") || document.documentElement.getAttribute("data-theme") === "dark";
+        if (isDark) {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+        
+        return () => {
+          if (isDark) {
+            document.documentElement.classList.add("dark");
+            document.documentElement.setAttribute("data-theme", "dark");
+          }
+        };
+    }, []);
+
     return (
-        <div className="min-h-screen w-full flex items-center justify-center p-4 bg-gradient-to-br from-blue-600 via-blue-500 to-cyan-400">
-            
-            {/* Background Decorations */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-white/10 blur-[100px]" />
-                <div className="absolute top-[60%] -right-[10%] w-[40%] h-[60%] rounded-full bg-blue-300/20 blur-[120px]" />
+        <div className="min-h-screen flex flex-col relative bg-[#f5f5f7] font-sans text-slate-900 overflow-hidden">
+            {/* ORIGINAL-STYLE BLUE GRADIENT WITH DECORATIVE CIRCLES */}
+            <div className="absolute top-0 left-0 w-full h-[45vh] bg-[#1e73be] bg-gradient-to-br from-[#1a66a8] to-[#258ced] z-0 pointer-events-none shadow-sm">
+                <div className="absolute top-[-50px] right-[-50px] w-64 h-64 bg-white/5 rounded-full pointer-events-none"></div>
+                <div className="absolute bottom-[-30px] left-[-30px] w-40 h-40 bg-white/5 rounded-full pointer-events-none"></div>
             </div>
 
-            <div className="w-full max-w-md flex flex-col items-center relative z-10">
-                {/* Logo Section */}
-                <div className="mb-10 flex flex-col items-center">
-                    <div className="w-16 h-16 bg-white rounded-2xl shadow-xl flex items-center justify-center p-3 mb-6 transform hover:scale-105 transition-transform duration-300">
-                        <Image 
-                            src={SITRALogo} 
-                            alt="SITRA" 
-                            className="w-full h-auto object-contain"
-                            priority
-                        />
+            <header className="relative z-10 w-full pt-10 pb-2">
+                <div className="flex justify-center">
+                    <div className="font-bold text-2xl tracking-tight text-white drop-shadow-md">
+                        {t("sitraLogin") || "SITRA POS"}
                     </div>
-                    <h1 className="text-4xl font-bold text-white tracking-tight mb-2">
-                        SITRA <span className="font-light opacity-90">POS</span>
-                    </h1>
                 </div>
+            </header>
 
-                {/* Form Wrapper */}
-                <div className="w-full animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out flex justify-center">
-                    <ResetPasswordFrom />
-                </div>
-                
-                {/* Footer */}
-                <div className="mt-10 text-white/60 text-[13px] font-medium text-center space-y-1">
-                    <p>© {new Date().getFullYear()} SITRA. {t("footer")}</p>
-                </div>
-            </div>
+            <main className="flex-1 flex items-center justify-center relative z-10 w-full px-4 pb-10">
+                <ResetPasswordFrom />
+            </main>
+
+            {/* FOOTER */}
+            <footer className="text-center py-8 text-[13px] text-slate-400 mt-auto">
+                © {year} SITRA POS. {t("footer")}
+            </footer>
         </div>
     );
 };

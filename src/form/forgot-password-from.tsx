@@ -35,8 +35,8 @@ const ForgotPasswordFrom = () => {
                         {...register("email")}
                         placeholder={t("emailPlaceholder") || "ej. qa@gmail.com"} 
                         autoComplete="off" 
-                        className={`w-full px-4 py-3.5 rounded-xl border-none bg-slate-100/70 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all placeholder-slate-400 text-[15px] shadow-sm ${
-                            errors.email ? "ring-2 ring-red-500/50 bg-red-50/50" : ""
+                        className={`w-full px-4 py-3.5 rounded-2xl border border-slate-200 bg-slate-50/60 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:outline-none transition-all placeholder-slate-400 text-sm sm:text-[15px] shadow-inner ${
+                            errors.email ? "border-rose-300 ring-4 ring-rose-500/10 bg-rose-50/30" : ""
                         }`}
                         required
                     />
@@ -47,7 +47,7 @@ const ForgotPasswordFrom = () => {
                 <button 
                     type="submit" 
                     disabled={isBtnDisable} 
-                    className="w-full mt-2 bg-slate-900 hover:bg-slate-800 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-full shadow-[0_4px_14px_0_rgb(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] transition-all text-[15px] flex items-center justify-center gap-2"
+                    className="w-full mt-2 py-3.5 px-5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-sm sm:text-[15px] shadow-lg shadow-blue-500/25 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                     {isBtnDisable ? (
                         <>
@@ -57,7 +57,24 @@ const ForgotPasswordFrom = () => {
                             </svg>
                             {tAdmin("sending")}
                         </>
-                    ) : t("sendResetLink")}
+                    ) : (
+                        <>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-4 h-4 text-white stroke-current"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={2.5}
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                                />
+                            </svg>
+                            <span>{t("sendResetLink")}</span>
+                        </>
+                    )}
                 </button>
             </form>
 

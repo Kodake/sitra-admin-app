@@ -23,6 +23,29 @@ const EditSubscriptionModal: React.FC<Props> = ({
   const [endDate, setEndDate] = useState<string>("");
   const [plan, setPlan] = useState<number>(1);
 
+  // Prevent background scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  // Close on ESC key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && isOpen && !isLoading) {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, isLoading, onClose]);
+
   useEffect(() => {
     if (user) {
       if (user.subscriptionEndDate) {
@@ -51,15 +74,21 @@ const EditSubscriptionModal: React.FC<Props> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 animate-in fade-in zoom-in-95 duration-200">
+    <div 
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-slate-950/60 dark:bg-slate-950/80 backdrop-blur-sm p-4 animate-in fade-in duration-200"
+      onClick={onClose}
+    >
+      <div 
+        className="bg-white dark:bg-slate-900 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-100 dark:border-slate-800 animate-in fade-in zoom-in-95 duration-200"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="flex items-center gap-4 mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl flex-shrink-0">
+          <div className="w-12 h-12 rounded-2xl bg-blue-50 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl flex-shrink-0">
             <i className="fal fa-calendar-edit"></i>
           </div>
           <div>
-            <h4 className="text-lg font-bold text-slate-900">{t("editSubTitle")}</h4>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <h4 className="text-lg font-bold text-slate-900 dark:text-white">{t("editSubTitle")}</h4>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               {user.companyName || user.userName} ({user.email})
             </p>
           </div>
@@ -68,13 +97,13 @@ const EditSubscriptionModal: React.FC<Props> = ({
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           {/* Plan Selector */}
           <div className="flex flex-col gap-1.5">
-            <label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
+            <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">
               {t("planLevel")}
             </label>
             <select
               value={plan}
               onChange={(e) => setPlan(Number(e.target.value))}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+              className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-medium text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
             >
               <option value={1}>{t("freePlan")}</option>
               <option value={2}>{t("standardPlan")}</option>
@@ -86,53 +115,54 @@ const EditSubscriptionModal: React.FC<Props> = ({
           {/* Expiration Date */}
           <div className="flex flex-col gap-1.5">
             <div className="flex justify-between items-center">
-              <label className="text-xs font-semibold text-slate-600 uppercase tracking-wide">
+              <label className="text-xs font-semibold text-slate-600 dark:text-slate-300 uppercase tracking-wide">
                 {t("expirationDate")}
               </label>
-              <span className="text-[11px] text-slate-400">{t("quickExtend")}</span>
+              <span className="text-[11px] text-slate-400 dark:text-slate-500">{t("quickExtend")}</span>
             </div>
             <input
               type="date"
               required
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-800 focus:bg-white focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
+              className="w-full px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-xs font-medium text-slate-800 dark:text-slate-100 focus:bg-white dark:focus:bg-slate-900 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
             />
+
             {/* Quick buttons */}
             <div className="flex items-center gap-2 mt-1">
               <button
                 type="button"
                 onClick={() => handleQuickExtend(1)}
-                className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg transition-colors"
+                className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-[11px] font-semibold rounded-xl transition-colors"
               >
                 {t("plus1Month")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickExtend(3)}
-                className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg transition-colors"
+                className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-[11px] font-semibold rounded-xl transition-colors"
               >
                 {t("plus3Months")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickExtend(6)}
-                className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg transition-colors"
+                className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-[11px] font-semibold rounded-xl transition-colors"
               >
                 {t("plus6Months")}
               </button>
               <button
                 type="button"
                 onClick={() => handleQuickExtend(12)}
-                className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 text-[11px] font-semibold rounded-lg transition-colors"
+                className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-[11px] font-semibold rounded-xl transition-colors"
               >
                 {t("plus1Year")}
               </button>
             </div>
           </div>
 
-          <div className="bg-blue-50/60 rounded-2xl p-4 border border-blue-100 text-xs text-blue-900 leading-relaxed">
-            <i className="fal fa-info-circle mr-1 text-blue-600"></i>
+          <div className="bg-blue-50/60 dark:bg-blue-950/40 rounded-2xl p-4 border border-blue-100 dark:border-blue-900/50 text-xs text-blue-900 dark:text-blue-200 leading-relaxed">
+            <i className="fal fa-info-circle mr-1 text-blue-600 dark:text-blue-400"></i>
             {t("editSubNotice")}
           </div>
 
@@ -141,14 +171,14 @@ const EditSubscriptionModal: React.FC<Props> = ({
               type="button"
               onClick={onClose}
               disabled={isLoading}
-              className="px-5 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-xs font-semibold hover:bg-slate-50 transition-colors disabled:opacity-50"
+              className="px-5 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors disabled:opacity-50"
             >
               {t("cancel")}
             </button>
             <button
               type="submit"
               disabled={isLoading}
-              className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 flex items-center gap-2 disabled:opacity-50"
+              className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-extrabold transition-all shadow-md shadow-blue-500/20 active:scale-95 flex items-center gap-2 disabled:opacity-50"
             >
               {isLoading && <i className="fal fa-spinner fa-spin"></i>}
               {t("saveChanges")}

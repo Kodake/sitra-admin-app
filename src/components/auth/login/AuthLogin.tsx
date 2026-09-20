@@ -93,7 +93,7 @@ const AuthLogin = () => {
                     className="text-blue-600 hover:text-blue-800 text-[13px] font-semibold transition-colors flex items-center gap-1 group"
                     onClick={fillDemo}
                   >
-                    <i className="fal fa-bolt transition-transform group-hover:scale-110"></i> {tAdmin("demoBtn")}
+                    <i className="fa-solid fa-bolt transition-transform group-hover:scale-110"></i> {tAdmin("demoBtn")}
                   </button>
                 )}
               </div>
@@ -103,10 +103,10 @@ const AuthLogin = () => {
                 placeholder={tAdmin("emailPlaceholder")}
                 {...register("email")}
                 autoComplete="off"
-                className={`w-full px-4 py-3.5 rounded-xl border-none bg-slate-100/70 focus:bg-white focus:ring-2 focus:outline-none transition-all placeholder-slate-400 text-[15px] ${
+                className={`w-full px-4 py-3.5 rounded-2xl border border-slate-200 bg-slate-50/60 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:outline-none transition-all placeholder-slate-400 text-sm sm:text-[15px] ${
                   errors.email
-                    ? "focus:ring-rose-500/30 ring-1 ring-rose-500 bg-rose-50/50"
-                    : "focus:ring-blue-500/20 shadow-sm"
+                    ? "border-rose-300 ring-4 ring-rose-500/10 bg-rose-50/30"
+                    : "shadow-inner"
                 }`}
               />
               {errors.email && (
@@ -127,7 +127,7 @@ const AuthLogin = () => {
                   className="text-blue-600 hover:text-blue-800 text-[13px] font-semibold transition-colors flex items-center gap-1 group"
                   onClick={togglePassword}
                 >
-                  <i className={`fal ${showPwd ? "fa-eye-slash" : "fa-eye"} transition-transform group-hover:scale-110`}></i>{" "}
+                  <i className={`fa-regular ${showPwd ? "fa-eye-slash" : "fa-eye"} transition-transform group-hover:scale-110`}></i>{" "}
                   {showPwd ? t("hidePassword") : t("showPassword")}
                 </button>
               </div>
@@ -137,10 +137,10 @@ const AuthLogin = () => {
                 placeholder="••••••••"
                 {...register("password")}
                 autoComplete="off"
-                className={`w-full px-4 py-3.5 rounded-xl border-none bg-slate-100/70 focus:bg-white focus:ring-2 focus:outline-none transition-all placeholder-slate-400 text-[15px] ${
+                className={`w-full px-4 py-3.5 rounded-2xl border border-slate-200 bg-slate-50/60 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:outline-none transition-all placeholder-slate-400 text-sm sm:text-[15px] ${
                   errors.password
-                    ? "focus:ring-rose-500/30 ring-1 ring-rose-500 bg-rose-50/50"
-                    : "focus:ring-blue-500/20 shadow-sm"
+                    ? "border-rose-300 ring-4 ring-rose-500/10 bg-rose-50/30"
+                    : "shadow-inner"
                 }`}
               />
               {errors.password && (
@@ -169,9 +169,22 @@ const AuthLogin = () => {
             <button
               type="submit"
               disabled={isBtnDisable}
-              className="disabled:opacity-50 disabled:cursor-not-allowed w-full mt-2 bg-slate-900 hover:bg-slate-800 disabled:bg-slate-300 text-white font-semibold py-4 rounded-full shadow-[0_4px_14px_0_rgb(0,0,0,0.1)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.15)] transition-all text-[15px]"
+              className="w-full mt-2 py-3.5 px-5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-sm sm:text-[15px] shadow-lg shadow-blue-500/25 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
-              {t("loginButton")}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-4 h-4 text-white stroke-current"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2.5}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H3"
+                />
+              </svg>
+              <span>{t("loginButton")}</span>
             </button>
           </form>
         </div>

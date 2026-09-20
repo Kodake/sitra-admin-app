@@ -56,7 +56,7 @@ const Wrapper: React.FC<WrapperProps> = ({ children }) => {
             className={`
               fixed inset-0 bg-black/50 backdrop-blur-[2px] xxl:hidden
               transition-opacity duration-300 ease-in-out
-              ${isExpanded ? "opacity-100 z-[9998] pointer-events-auto" : "opacity-0 z-[-1] pointer-events-none"}
+              ${isExpanded ? "opacity-100 z-[998] pointer-events-auto" : "opacity-0 z-[-1] pointer-events-none"}
             `}
             onClick={() => setShowingNavigationDropdown(true)}
             aria-hidden="true"

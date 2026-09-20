@@ -12,6 +12,8 @@ interface InputTextProps {
     autoComplete?: string;
     inputProps?: any;
     InputProps?: any;
+    startAdornment?: any;
+    endAdornment?: any;
     error?: boolean;
     helperText?: string;
     rows?: number;
@@ -36,6 +38,8 @@ const InputText: React.FC<InputTextProps> = ({
     autoComplete = "off",
     inputProps,
     InputProps,
+    startAdornment,
+    endAdornment,
     error,
     helperText,
     rows,
@@ -50,6 +54,24 @@ const InputText: React.FC<InputTextProps> = ({
     value: propValue,
     ...rest
 }) => {
+    // Extract any adornments mistakenly placed in inputProps (lowercase) or passed directly
+    const {
+        startAdornment: inputPropsStart,
+        endAdornment: inputPropsEnd,
+        ...cleanInputProps
+    } = inputProps || {};
+
+    const resolvedStartAdornment =
+        startAdornment || InputProps?.startAdornment || inputPropsStart;
+    const resolvedEndAdornment =
+        endAdornment || InputProps?.endAdornment || inputPropsEnd;
+
+    const finalInputProps = {
+        ...InputProps,
+        ...(resolvedStartAdornment ? { startAdornment: resolvedStartAdornment } : {}),
+        ...(resolvedEndAdornment ? { endAdornment: resolvedEndAdornment } : {}),
+    };
+
     const renderTextField = (fieldProps: any = {}) => (
         <TextField
             {...fieldProps}
@@ -74,9 +96,9 @@ const InputText: React.FC<InputTextProps> = ({
             rows={rows}
             disabled={disabled}
             InputLabelProps={{ shrink: true }}
-            InputProps={InputProps}
+            InputProps={finalInputProps}
             inputProps={{
-                ...inputProps,
+                ...cleanInputProps,
                 id: id || name,
                 step: step,
             }}

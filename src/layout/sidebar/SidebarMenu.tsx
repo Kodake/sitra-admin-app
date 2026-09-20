@@ -2,6 +2,8 @@ import useProfile from "@/hooks/auth/useProfile";
 import useGlobalContext from "@/hooks/shared/use-context";
 import Image from "next/image";
 import Link from "next/link";
+import sidebarLogo from "../../../public/assets/img/logo/logo.png";
+import sidebarSmallLogo from "../../../public/assets/img/logo/small-logo.png";
 import SidebarNavs from "./SidebarNavs";
 
 const SidebarMenu = () => {
@@ -18,7 +20,7 @@ const SidebarMenu = () => {
     <aside
       className={`
         inventual-sidebar-area
-        fixed top-0 left-0 h-screen z-[9999]
+        fixed top-0 left-0 h-screen z-[999] xxl:z-30
         transition-all duration-300 ease-in-out
 
         ${/* ── Desktop (>= xxl / 1400px) ── */""}
@@ -48,7 +50,7 @@ const SidebarMenu = () => {
                   <Link href="/dashboard" className="flex flex-col items-center">
                     <Image
                       className="rounded"
-                      src="/assets/img/logo/logo.png"
+                      src={sidebarLogo}
                       width={140}
                       height={40}
                       alt="logo"
@@ -64,7 +66,7 @@ const SidebarMenu = () => {
                 <div className="sidebar-small-logo">
                   <Link href="/dashboard">
                     <Image
-                      src="/assets/img/logo/small-logo.png"
+                      src={sidebarSmallLogo}
                       width={40}
                       height={40}
                       alt="small logo"
