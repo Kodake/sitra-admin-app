@@ -1357,7 +1357,14 @@
     "adminUser": "Usuario Administrador",
     "userImageAlt": "Imagen de usuario",
     "superAdminRole": "SuperAdmin • SISTRA SRL",
-    "toggleTheme": "Cambiar Tema"
+    "toggleTheme": "Cambiar Tema",
+    "notifications": "Notificaciones",
+    "clearAll": "Limpiar todo",
+    "noNotifications": "No hay notificaciones",
+    "noNotificationsDesc": "Las alertas recientes aparecerán aquí durante 10 segundos.",
+    "autoExpireNotice": "Las alertas expiran automáticamente en 10s",
+    "justNow": "Ahora mismo",
+    "dismiss": "Descartar"
   },
   "Errors": {
     "NO_ENTITY_TO_VALIDATE": "No se encontró la entidad a validar.",

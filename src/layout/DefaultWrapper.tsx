@@ -45,7 +45,7 @@ const Wrapper: React.FC<WrapperProps> = ({ children }) => {
   return (
     <>
       <div className="inventual-dashboard-area">
-        <ToastContainer></ToastContainer>
+        <ToastContainer autoClose={10000} newestOnTop={false} closeOnClick pauseOnHover />
         <div className="inventual-dashboard-main relative">
           {/* ── Sidebar ── */}
           <SidebarMenu />

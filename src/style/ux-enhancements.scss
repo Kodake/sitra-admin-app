@@ -157,7 +157,7 @@
 .MuiTextField-root {
   .MuiInputBase-root {
     background-color: #f2f2f7 !important;
-    border-radius: 10px !important;
+    border-radius: 14px !important;
     border: 1px solid transparent !important;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 
@@ -595,14 +595,48 @@
     color: var(--text-heading) !important;
   }
 
-  /* Body & secondary texts contrast */
-  p, span, label,
+  /* Body & secondary texts contrast - exclude buttons, badges, and elements with explicit text color */
+  p:not([class*="text-"]):not(button *),
+  span:not([class*="text-"]):not(button *):not([class*="bg-"]):not(.badge),
+  label:not([class*="text-"]),
   .text-body,
   .inventual-sidebar-menu ul li a,
   .MuiTableCell-body,
   .MuiTablePagination-displayedRows,
   .MuiTablePagination-selectLabel {
     color: var(--text-body) !important;
+  }
+
+  /* High contrast enforcement for buttons and text-white elements in dark mode */
+  button.text-white,
+  button.text-white *,
+  .text-white,
+  .text-white *,
+  [class*="text-white"],
+  [class*="text-white"] * {
+    &.text-white,
+    span.text-white,
+    p.text-white,
+    h1.text-white, h2.text-white, h3.text-white, h4.text-white, h5.text-white {
+      color: #ffffff !important;
+    }
+  }
+
+  /* Ensure button children inherit button text color or stay white when on colored buttons */
+  button:not([class*="text-slate"]):not([class*="text-gray"]) {
+    &.bg-blue-600,
+    &.bg-indigo-600,
+    &.bg-purple-600,
+    &.bg-amber-600,
+    &.bg-emerald-600,
+    &.bg-rose-600 {
+      color: #ffffff !important;
+      span:not([class*="text-"]),
+      p:not([class*="text-"]),
+      div:not([class*="text-"]) {
+        color: #ffffff !important;
+      }
+    }
   }
 
   /* General border overrides */

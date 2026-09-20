@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import React, { createContext, useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 
+import { NotificationProvider } from "./NotificationContext";
+
 export const AppContext = createContext<AppContextType | undefined>(undefined);
 const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
@@ -67,7 +69,9 @@ const AppProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <QueryClientProviderAny client={queryClient}>
       <AuthProvider>
-        <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
+        <NotificationProvider>
+          <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
+        </NotificationProvider>
       </AuthProvider>
     </QueryClientProviderAny>
   );

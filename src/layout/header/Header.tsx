@@ -8,7 +8,9 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import LanguageDropdown from "./LanguageDropdown";
+import NotificationDropdown from "./NotificationDropdown";
 import QuickMenuDropdown from "./QuickMenuDropdown";
+import { useNotifications } from "@/contextApi/NotificationContext";
 
 const Header = () => {
   const { onSubmitLogout } = useAuths("login");
@@ -78,6 +80,7 @@ const Header = () => {
 
   const { setShowingNavigationDropdown, showingNavigationDropdown, theme, toggleTheme } =
     useGlobalContext();
+  const { unreadCount } = useNotifications();
 
   return (
     <>
@@ -104,32 +107,32 @@ const Header = () => {
             </div>
           </div>
           <div className="inventual-header-notify-wrapper px-5 border-e border-solid border-borderLight min-h-[70px] flex items-center">
-            {/* <div className="inventual-header-notification pe-5 relative" ref={notifRef}>
-              <button type="button" className="noti hover:text-primary transition-colors" onClick={toggleNotificationDropdown}>
-                <i className="fal fa-bell"></i>
-              </button>
-              <div
-                className={`inventual-notify-dropdown transition-all duration-200 transform origin-top-right ${isNotificationDropdown ? "notifydropdown-enable opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
-                  }`}
-              >
-                <NotificationDropdown />
-              </div>
-            </div> */}
-            {/* <div className="inventual-header-email pe-5 relative" ref={emailRef}>
+            {/* Notification Bell */}
+            <div className="inventual-header-notification pe-5 relative flex items-center" ref={notifRef}>
               <button
                 type="button"
-                className="emai hover:text-primary transition-colors"
-                onClick={toggleEmailDropdown}
+                className="relative text-[18px] text-body hover:text-primary transition-colors leading-none flex items-center p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
+                onClick={toggleNotificationDropdown}
+                aria-label={t("notifications") || "Notifications"}
               >
-                <i className="fal fa-envelope"></i>
+                <i className="fal fa-bell"></i>
+                {unreadCount > 0 && (
+                  <span className="absolute -top-1 -right-1 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white shadow-sm animate-pulse">
+                    {unreadCount > 99 ? "99+" : unreadCount}
+                  </span>
+                )}
               </button>
               <div
-                className={`inventual-notify-dropdown transition-all duration-200 transform origin-top-right ${isEmailDropdown ? "emaildropdown-enable opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
-                  }`}
+                className={`inventual-notify-dropdown !start-auto !end-0 !top-[50px] !w-[360px] maxSm:!w-[300px] !p-0 rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-all duration-200 transform origin-top-right ${
+                  isNotificationDropdown
+                    ? "notifydropdown-enable opacity-100 scale-100"
+                    : "opacity-0 scale-95 pointer-events-none"
+                }`}
               >
-                <EmailDropdown />
+                <NotificationDropdown onClose={() => setNotificationDropdown(false)} />
               </div>
-            </div> */}
+            </div>
+
             {/* Theme Toggle Switch */}
             <div className="inventual-header-theme-toggle pe-5 flex items-center">
               <button

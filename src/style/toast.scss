@@ -240,3 +240,24 @@
     transform: scale(1) rotate(0);
   }
 }
+
+/* Single on-screen toast enforcement:
+   Hide any earlier toasts in the notification container if multiple arrive simultaneously,
+   so only the newest/last toast is visible on screen. */
+.Toastify__toast-container--top-right .Toastify__toast:not(:last-child) {
+  display: none !important;
+}
+
+/* Notification dropdown 10-second countdown bar animation */
+@keyframes notifCountdown {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.notification-countdown-bar {
+  animation: notifCountdown 10s linear forwards;
+}

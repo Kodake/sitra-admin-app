@@ -55,6 +55,7 @@ export const showToastConfirmation = ({
     toast.warning(<ConfirmToast closeToast={() => toast.dismiss()} />, {
         position: "top-center",
         autoClose: false,
+        data: { isConfirmation: true },
         closeButton: false,
         draggable: false,
         style: { borderRadius: '1.25rem', padding: '0.5rem' } // Gives the toast wrapper a more Apple-like rounded feel

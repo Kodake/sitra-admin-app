@@ -1357,7 +1357,14 @@
     "adminUser": "Admin User",
     "userImageAlt": "User image",
     "superAdminRole": "SuperAdmin • SISTRA SRL",
-    "toggleTheme": "Toggle Theme"
+    "toggleTheme": "Toggle Theme",
+    "notifications": "Notifications",
+    "clearAll": "Clear all",
+    "noNotifications": "No notifications",
+    "noNotificationsDesc": "Recent alerts will appear here for 10 seconds.",
+    "autoExpireNotice": "Alerts expire automatically after 10s",
+    "justNow": "Just now",
+    "dismiss": "Dismiss"
   },
   "Errors": {
     "NO_ENTITY_TO_VALIDATE": "No entity to validate found.",
