@@ -2,32 +2,22 @@ const withNextIntl = require("next-intl/plugin")("./src/i18n.ts");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: "standalone", // Omitted for Vercel deployment compatibility
-  // turbopack: {
-  //   root: __dirname,
-  // },
-
-
   typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
     ignoreBuildErrors: true,
   },
 
   experimental: {
-
     optimizePackageImports: [
       "@mui/material",
       "@mui/icons-material",
+      "@mui/x-date-pickers",
+      "react-apexcharts",
+      "apexcharts",
+      "dayjs",
       "lodash",
+      "react-toastify",
+      "@hookform/resolvers",
     ],
-  },
-
-  webpack: (config) => {
-    config.resolve.symlinks = false;
-    return config;
   },
 
   async headers() {

@@ -49,13 +49,11 @@ export default async function RootLayout({
             <Suspense fallback={null}>
               <NavigationLoadingTracker />
             </Suspense>
-            <Suspense fallback={null}>
-              <AxiosRouterProvider>
-                <AppProvider>
-                  <AuthGuard>{children}</AuthGuard>
-                </AppProvider>
-              </AxiosRouterProvider>
-            </Suspense>
+            <AxiosRouterProvider>
+              <AppProvider>
+                <AuthGuard>{children}</AuthGuard>
+              </AppProvider>
+            </AxiosRouterProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
