@@ -144,7 +144,7 @@ const DynamicTable = <T extends { id: string | number; isActive?: boolean }>({
                                                     )
                                                 ) : null
                                             ) : column.id === "action" ? (
-                                                actions && (!actions.shouldShowActions || actions.shouldShowActions(row)) && (
+                                                actions && (!actions.shouldShowActions || actions.shouldShowActions(row)) ? (
                                                     <div className="inventual-list-action-style">
                                                         <PopupState variant="popover">
                                                             {(popupState: any) => (
@@ -219,6 +219,10 @@ const DynamicTable = <T extends { id: string | number; isActive?: boolean }>({
                                                             )}
                                                         </PopupState>
                                                     </div>
+                                                ) : (
+                                                    <span className="text-slate-400 dark:text-slate-500 text-xs italic">
+                                                        {t_g("protected")}
+                                                    </span>
                                                 )
                                             ) : (
                                                 (row[column.id as keyof T] as unknown as string)

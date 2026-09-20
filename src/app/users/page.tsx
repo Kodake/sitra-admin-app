@@ -12,13 +12,11 @@ const UsersPage = () => {
     <Wrapper>
       <main>
         <BreadCrumb
-          title={t("usersTitle")}
+          title={t("usersSubtitle")}
           subTitleOne="SuperAdmin"
           subTitleTwo={t("usersSubtitle")}
         />
-        <div className="mt-6 px-4 sm:px-6 lg:px-8 mb-10">
-          <AdminUsersTable />
-        </div>
+        <AdminUsersTable />
       </main>
     </Wrapper>
   );
