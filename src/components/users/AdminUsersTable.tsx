@@ -159,12 +159,12 @@ const AdminUsersTable: React.FC = () => {
   const columns: TableColumn<AdminUser>[] = [
     {
       id: "companyName",
-      label: t("colCompanyUser") || "Nombre / Razón Social",
+      label: t("colCompanyUser") || "Empresa / Usuario",
       sortable: true,
       render: (row) => (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 py-0.5">
           <div
-            className={`w-9 h-9 rounded-2xl flex items-center justify-center font-bold text-xs flex-shrink-0 ${
+            className={`w-10 h-10 rounded-2xl flex items-center justify-center font-bold text-xs flex-shrink-0 ${
               row.isSuperAdmin
                 ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-sm"
                 : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60"
@@ -176,13 +176,13 @@ const AdminUsersTable: React.FC = () => {
               (row.companyName?.[0] || row.userName?.[0] || "U").toUpperCase()
             )}
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-slate-800 dark:text-slate-100">
+          <div className="flex flex-col min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="font-bold text-slate-900 dark:text-white text-sm">
                 {row.companyName || row.userName}
               </span>
               {row.isSuperAdmin && (
-                <span className="badge-stroke badge-blue text-[10px] font-bold">
+                <span className="badge-stroke badge-blue text-[10px] font-bold py-0 px-2">
                   SUPERADMIN
                 </span>
               )}
@@ -196,63 +196,44 @@ const AdminUsersTable: React.FC = () => {
     },
     {
       id: "rucNumber",
-      label: t("colRucContact") || "RNC & Contacto",
+      label: t("colRucContact") || "RNC / Contacto",
       sortable: true,
       render: (row) => (
-        <div className="flex flex-col">
-          <span className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm font-medium">
-            RNC:{" "}
-            <span className="font-mono text-xs font-bold text-slate-800 dark:text-slate-200">
-              {row.rucNumber || g("notApply")}
-            </span>
+        <div className="flex flex-col py-0.5">
+          <span className="text-slate-700 dark:text-slate-300 text-xs font-semibold">
+            RNC: <span className="font-mono text-slate-900 dark:text-slate-100 font-bold">{row.rucNumber || g("notApply")}</span>
           </span>
-          <span className="text-[11px] text-slate-400 dark:text-slate-500">
-            {row.phoneNumber || row.municipality || "—"}
+          <span className="text-[11px] text-slate-400 dark:text-slate-500 mt-0.5">
+            {row.phoneNumber ? `Tel: ${row.phoneNumber}` : (row.municipality || "—")}
           </span>
         </div>
       ),
     },
     {
       id: "planName",
-      label: t("colPlan") || "Plan",
+      label: t("colPlanAndSubscription") || "Plan y Suscripción",
       sortable: true,
       render: (row) => (
-        <span className={`${getPlanBadgeClass(row.planName)} text-xs font-semibold`}>
-          {row.planName || "Free"}
-        </span>
-      ),
-    },
-    {
-      id: "subscriptionEndDate",
-      label: t("colSubPeriod") || "Periodo Suscripción",
-      sortable: true,
-      render: (row) =>
-        row.isSuperAdmin ? (
-          <span className="text-slate-400 dark:text-slate-500 text-xs italic">
-            {t("unlimited")}
-          </span>
-        ) : row.subscriptionEndDate ? (
-          <div className="flex flex-col">
-            <span className="text-slate-700 dark:text-slate-200 text-xs font-semibold">
-              {t("to")} {row.subscriptionEndDate.split("T")[0]}
+        <div className="flex flex-col gap-1 py-0.5">
+          <div className="flex items-center gap-1.5 flex-wrap">
+            <span className={`${getPlanBadgeClass(row.planName)} text-xs font-semibold`}>
+              {row.planName || "Free"}
             </span>
-            {row.subscriptionStartDate && (
-              <span className="text-[11px] text-slate-400 dark:text-slate-500">
-                {t("from")} {row.subscriptionStartDate.split("T")[0]}
+            {getSubscriptionBadge(row)}
+          </div>
+          <div className="text-[11px] text-slate-400 dark:text-slate-500">
+            {row.isSuperAdmin ? (
+              <span className="italic">{t("unlimited") || "Ilimitado"}</span>
+            ) : row.subscriptionEndDate ? (
+              <span>
+                {t("expires") || "Vence"}: <span className="font-semibold text-slate-600 dark:text-slate-300">{row.subscriptionEndDate.split("T")[0]}</span>
               </span>
+            ) : (
+              <span className="italic">{t("notSpecified") || "No especificado"}</span>
             )}
           </div>
-        ) : (
-          <span className="text-slate-400 dark:text-slate-500 text-xs italic">
-            {t("notSpecified")}
-          </span>
-        ),
-    },
-    {
-      id: "subscriptionStatus",
-      label: t("colSubHealth") || "Salud Suscripción",
-      sortable: true,
-      render: (row) => getSubscriptionBadge(row),
+        </div>
+      ),
     },
     {
       id: "status",
@@ -261,7 +242,7 @@ const AdminUsersTable: React.FC = () => {
       render: (row) =>
         row.isSuperAdmin ? (
           <span className="badge-stroke badge-success text-xs font-semibold">
-            {t("alwaysActive") || g("activated")}
+            {g("activated") || "Activo"}
           </span>
         ) : (
           <button
@@ -271,7 +252,7 @@ const AdminUsersTable: React.FC = () => {
               handleToggleStatusClick(row);
             }}
             title={row.isActive ? t("clickToDisable") : t("clickToEnable")}
-            className="cursor-pointer transition-transform active:scale-95"
+            className="cursor-pointer transition-transform active:scale-95 inline-flex"
           >
             {row.isActive ? (
               <span className="badge-stroke badge-success text-xs font-semibold">

@@ -81,7 +81,11 @@ const DynamicTable = <T extends { id: string | number; isActive?: boolean }>({
                                 />
                             </TableCell>
                             {columns.map((column) => (
-                                <TableCell key={column.id as string} align={column.align}>
+                                <TableCell
+                                    key={column.id as string}
+                                    align={column.align}
+                                    className="whitespace-nowrap font-bold text-xs sm:text-sm text-slate-700 dark:text-slate-200 py-3.5 px-4"
+                                >
                                     {column.sortable ? (
                                         <TableSortLabel
                                             active={sorting.orderBy === column.id}
@@ -122,7 +126,11 @@ const DynamicTable = <T extends { id: string | number; isActive?: boolean }>({
                                         />
                                     </TableCell>
                                     {columns.map((column) => (
-                                        <TableCell key={column.id as string} align={column.align}>
+                                        <TableCell
+                                            key={column.id as string}
+                                            align={column.align}
+                                            className="whitespace-nowrap py-3 px-4 text-xs sm:text-sm text-slate-800 dark:text-slate-100"
+                                        >
                                             {column.render ? (
                                                 column.render(row)
                                             ) : column.id === "status" ? (
