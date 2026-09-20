@@ -1,0 +1,95 @@
+// Modern SaaS Dashboard Chart Styles
+// Sleek, minimal, accessible, and reactive to light & dark themes
+
+.apexcharts-canvas {
+  font-family: inherit !important;
+
+  // Modern Glassmorphism Tooltip
+  .apexcharts-tooltip {
+    border-radius: 12px !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+    border: 1px solid rgba(226, 232, 240, 0.8) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(8px) !important;
+    padding: 6px 10px !important;
+    transition: all 0.15s ease !important;
+  }
+
+  .apexcharts-tooltip-title {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(241, 245, 249, 0.8) !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    padding: 6px 8px !important;
+    color: #1e293b !important;
+  }
+
+  .apexcharts-tooltip-text {
+    font-size: 12px !important;
+    color: #334155 !important;
+    padding: 4px 0 !important;
+  }
+
+  .apexcharts-tooltip-series-group {
+    padding: 2px 4px !important;
+  }
+
+  .apexcharts-tooltip-marker {
+    border-radius: 50% !important;
+    margin-right: 8px !important;
+  }
+
+  // Modern Legend Styling
+  .apexcharts-legend {
+    padding: 0 !important;
+  }
+
+  .apexcharts-legend-text {
+    font-family: inherit !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .apexcharts-legend-marker {
+    border-radius: 50% !important;
+    margin-right: 6px !important;
+  }
+
+  // Grid styling (ultra faint and modern)
+  .apexcharts-gridline {
+    stroke-dasharray: 4 !important;
+  }
+
+  // Axes styling
+  .apexcharts-xaxis-label,
+  .apexcharts-yaxis-label {
+    font-family: inherit !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+  }
+}
+
+// Dark Mode Overrides for Tooltips and Annotations
+.dark {
+  .apexcharts-canvas {
+    .apexcharts-tooltip {
+      border: 1px solid rgba(51, 65, 85, 0.8) !important;
+      background: rgba(15, 23, 42, 0.95) !important;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    .apexcharts-tooltip-title {
+      border-bottom: 1px solid rgba(51, 65, 85, 0.8) !important;
+      color: #f1f5f9 !important;
+    }
+
+    .apexcharts-tooltip-text {
+      color: #cbd5e1 !important;
+    }
+
+    .apexcharts-tooltip-y-group {
+      color: #f1f5f9 !important;
+    }
+  }
+}

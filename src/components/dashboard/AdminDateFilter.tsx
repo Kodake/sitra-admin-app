@@ -40,13 +40,13 @@ const AdminDateFilter: React.FC<Props> = ({
       {/* Title & Info */}
       <div>
         <div className="flex items-center gap-2.5 flex-wrap">
-          <h4 className="text-base font-bold text-slate-800 dark:text-white">{t("metricsAuditTitle")}</h4>
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold tracking-wide bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800/60 shadow-[0_1px_2px_rgba(37,99,235,0.06)] whitespace-nowrap shrink-0">
+          <h4 className="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white tracking-tight">{t("metricsAuditTitle")}</h4>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide bg-blue-50 dark:bg-blue-950/50 text-blue-700 dark:text-blue-300 border border-blue-200/80 dark:border-blue-800/60 shadow-[0_1px_2px_rgba(37,99,235,0.06)] whitespace-nowrap shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
             {t("superAdminBadge")}
           </span>
         </div>
-        <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">
+        <p className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-0.5">
           {t("metricsAuditDesc")}
         </p>
       </div>

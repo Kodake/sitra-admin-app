@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { AdminMetrics } from "@/types/adminTypes";
 import { useTranslations } from "next-intl";
+import "./amazon-charts.scss";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -179,8 +180,8 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
       <div className="lg:col-span-6 bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h5 className="text-base font-bold text-slate-800 dark:text-white">{t("growthTrend")}</h5>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">{t("growthTrendDesc")}</p>
+            <h5 className="text-base font-extrabold text-slate-900 dark:text-white tracking-tight">{t("growthTrend")}</h5>
+            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">{t("growthTrendDesc")}</p>
           </div>
           <span className="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 flex items-center justify-center text-sm">
             <i className="fal fa-chart-area"></i>
@@ -200,8 +201,8 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
       <div className="lg:col-span-3 bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h5 className="text-base font-bold text-slate-800 dark:text-white">{t("planDistribution")}</h5>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">{t("planDistributionDesc")}</p>
+            <h5 className="text-base font-extrabold text-slate-900 dark:text-white tracking-tight">{t("planDistribution")}</h5>
+            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">{t("planDistributionDesc")}</p>
           </div>
           <span className="w-8 h-8 rounded-xl bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 flex items-center justify-center text-sm">
             <i className="fal fa-layer-group"></i>
@@ -216,8 +217,8 @@ const AdminCharts: React.FC<Props> = ({ metrics }) => {
       <div className="lg:col-span-3 bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h5 className="text-base font-bold text-slate-800 dark:text-white">{t("subscriptionHealth")}</h5>
-            <p className="text-xs text-slate-400 dark:text-slate-500 mt-0.5">{t("subscriptionHealthDesc")}</p>
+            <h5 className="text-base font-extrabold text-slate-900 dark:text-white tracking-tight">{t("subscriptionHealth")}</h5>
+            <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">{t("subscriptionHealthDesc")}</p>
           </div>
           <span className="w-8 h-8 rounded-xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm">
             <i className="fal fa-heartbeat"></i>

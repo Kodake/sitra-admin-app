@@ -53,15 +53,15 @@ const AdminDashboardMain: React.FC = () => {
             <i className="fal fa-users-crown"></i>
           </div>
           <div>
-            <h4 className="text-lg font-bold">{t("quickActionTitle")}</h4>
-            <p className="text-xs text-slate-300 mt-1 max-w-xl">
+            <h4 className="text-lg sm:text-xl font-extrabold tracking-tight">{t("quickActionTitle")}</h4>
+            <p className="text-xs text-slate-300 mt-1 max-w-xl font-normal leading-relaxed">
               {t("quickActionDesc")}
             </p>
           </div>
         </div>
         <Link
           href="/users"
-          className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-2xl transition-all shadow-md hover:shadow-blue-500/25 whitespace-nowrap flex items-center gap-2 active:scale-95"
+          className="px-5 py-3 bg-blue-600 hover:bg-blue-500 text-white text-xs font-extrabold rounded-2xl transition-all shadow-md hover:shadow-blue-500/25 whitespace-nowrap flex items-center gap-2 active:scale-95 tracking-wide"
         >
           <i className="fal fa-sliders-h"></i> {t("openUsersPanel")}
         </Link>

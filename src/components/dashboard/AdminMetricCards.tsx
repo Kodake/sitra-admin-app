@@ -83,24 +83,27 @@ const AdminMetricCards: React.FC<Props> = ({ metrics, isLoading }) => {
           key={card.id}
           className="bg-white dark:bg-slate-900 rounded-3xl p-5 border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between relative overflow-hidden group"
         >
+          {/* Ambient Glow Gradient */}
+          <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-gradient-to-br from-blue-500/10 to-transparent blur-2xl opacity-30 group-hover:opacity-75 transition-opacity duration-500 pointer-events-none" />
+
           {/* Top accent bar */}
           <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${card.gradient}`} />
 
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+          <div className="flex items-center justify-between mb-3 relative z-10">
+            <span className="text-xs font-semibold tracking-wide text-slate-500 dark:text-slate-400">
               {card.title}
             </span>
-            <div className={`w-9 h-9 rounded-2xl ${card.bgLight} ${card.textColor} flex items-center justify-center text-base transition-transform group-hover:scale-110`}>
+            <div className={`w-9 h-9 rounded-2xl ${card.bgLight} ${card.textColor} flex items-center justify-center text-base transition-transform group-hover:scale-110 shadow-2xs`}>
               <i className={card.icon}></i>
             </div>
           </div>
 
-          <div className="my-1">
+          <div className="my-1 relative z-10">
             {isLoading ? (
               <div className="h-8 w-16 bg-slate-200 dark:bg-slate-800 animate-pulse rounded-lg"></div>
             ) : (
               <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-black text-slate-800 dark:text-white tracking-tight">
+                <span className="text-2xl lg:text-[28px] leading-tight font-extrabold text-slate-900 dark:text-white tracking-tight">
                   {card.value}
                 </span>
                 {card.badge && (
@@ -110,7 +113,7 @@ const AdminMetricCards: React.FC<Props> = ({ metrics, isLoading }) => {
                 )}
               </div>
             )}
-            <p className="text-[12px] text-slate-400 dark:text-slate-500 mt-1">{card.subtitle}</p>
+            <p className="text-[11px] font-medium text-slate-400 dark:text-slate-500 mt-1">{card.subtitle}</p>
           </div>
         </div>
       ))}

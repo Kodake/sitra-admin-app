@@ -25,10 +25,10 @@ const ExpiringAlertBanner: React.FC<Props> = ({ metrics }) => {
           <i className="fal fa-bell-exclamation"></i>
         </div>
         <div>
-          <h5 className="text-sm font-bold text-slate-800 dark:text-white">
+          <h5 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white tracking-tight">
             {t("alertBannerTitle")}
           </h5>
-          <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5">
+          <p className="text-xs text-slate-600 dark:text-slate-300 mt-0.5 font-medium">
             {t("alertBannerDesc", { expiring: expiringCount, expired: expiredCount })}
           </p>
         </div>
@@ -36,7 +36,7 @@ const ExpiringAlertBanner: React.FC<Props> = ({ metrics }) => {
 
       <Link
         href="/users?subscriptionStatus=expiringSoon"
-        className="px-4 py-2 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 text-white text-xs font-semibold rounded-2xl transition-all whitespace-nowrap shadow-sm active:scale-95"
+        className="px-4 py-2 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100 text-white text-xs font-extrabold rounded-2xl transition-all whitespace-nowrap shadow-sm active:scale-95 tracking-wide"
       >
         {t("manageUsers")} <i className="fal fa-arrow-right ml-1"></i>
       </Link>
